@@ -6,14 +6,6 @@
 
 # 简介
 
-![daily-installs](https://palerock.cn/node-service/images/greasyfork/stats/daily-installs/462288)
-![daily-updates](https://palerock.cn/node-service/images/greasyfork/stats/daily-updates/462288)
-![total-installs](https://palerock.cn/node-service/images/greasyfork/stats/total-installs/462288)
-![fan_score](https://palerock.cn/node-service/images/greasyfork/info/fan_score/462288?name=%E5%BE%97%E5%88%86&rcolor=orange)
-![good_ratings](https://palerock.cn/node-service/images/greasyfork/info/good_ratings/462288?name=%E5%A5%BD%E8%AF%84&rcolor=darkcyan)
-![views-info](https://palerock.cn/node-service/images/greasyfork/views-info/462288)
-![license](https://palerock.cn/node-service/images/greasyfork/info/license/462288?name=%E8%AE%B8%E5%8F%AF%E8%AF%81&rcolor=blueviolet)
-
 Tips: 您可以点击用户成分标签来打开“已识别用户”窗口，以查看被标记的原因。  
 Tips: 如需自查，请复制自己的UID号，打开脚本管理器菜单，点击“手动输入ID检查”来进行自查，可查看被标记的原因，如需更详细，请打开F12控制台查看  
   
