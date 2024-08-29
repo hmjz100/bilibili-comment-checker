@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name              （改）B站成分检测器
-// @version           1.49
+// @version           2.0.0
 // @author            hmjz100,xulaupuz,trychen
 // @namespace         github.com/hmjz100
 // @license           GPLv3
-// @description       《也许同类型中最好用？》系列 - B站评论区自动标注成分，支持动态和关注识别以及手动输入 UID 识别，默认标注包括抽奖、原神、崩坏3、崩坏星穹铁道、绝区零、鸣潮、战双帕弥什、少女前线、少女前线2、明日方舟、碧蓝航线、VTuber、Asoul、王者荣耀、三国杀、Minecraft、迷你世界、初生科技、穿越火线、地下城与勇士、绝地求生、英雄联盟、第五人格、蛋仔派对、GLITCH。
+// @description       《也许同类型中最好用？》系列 - B站评论区自动标注成分，支持动态和关注识别以及手动输入 UID 识别，默认标注包括抽奖、原神、崩坏3、崩坏星穹铁道、绝区零、鸣潮、战双帕弥什、少女前线、少女前线2、明日方舟、碧蓝航线、VTuber、Asoul、王者荣耀、三国杀、Minecraft、迷你世界、初生科技、穿越火线、地下城与勇士、绝地求生、英雄联盟、第五人格、蛋仔派对、GLITCH、碧蓝档案、尘白禁区、NIKKE胜利女神、彩虹六号：围攻。
 // @match             *://*.bilibili.com/*
 // @icon              data:image/x-icon;base64,AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAABMLAAATCwAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A1qEAANahAADWoQAG1qEAb9ahAMvWoQD01qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD01qEAy9ahAG/WoQAG1qEAANahAADWoQAA1qEAG9ahAM/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahANDWoQAb1qEAANahAAfWoQDQ1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahANHWoQAH1qEAbtahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAG7WoQDH1qEA/9ahAP/WoQD/1qEAtdahABjWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahABvWoQC11qEA/9ahAP/WoQD/1qEAx9ahAPnWoQD/1qEA/9ahAP/WoQAZ1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahABjWoQD/1qEA/9ahAP/WoQDz1qEA/9ahAP/WoQD/1qEA/9ahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAErWoQDn1qEA5NahAErWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAErWoQDn1qEA5NahAErWoQAA1qEAANahAADWoQAA1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEA5tahAP/WoQD/1qEA59ahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEA5tahAP/WoQD/1qEA59ahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEA5tahAP/WoQD/1qEA5tahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEA5tahAP/WoQD/1qEA5tahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAADWoQAA1qEAANahAADWoQBJ1qEA5tahAObWoQBJ1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQBJ1qEA5tahAObWoQBJ1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEA+dahAP/WoQD/1qEA/9ahABnWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAGdahAP/WoQD/1qEA/9ahAPjWoQDH1qEA/9ahAP/WoQD/1qEAttahABnWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahABnWoQC21qEA/9ahAP/WoQD/1qEAx9ahAG3WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQBt1qEABtahAM/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA0NahAAfWoQAA1qEAG9ahAM/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAM/WoQAb1qEAANahAADWoQAA1qEABtahAG7WoQDH1qEA89ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA89ahAMfWoQBu1qEABtahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEADtahAMXWoQD/1qEA/9ahAP/WoQD/1qEAxdahAA/WoQAA1qEAANahAADWoQAA1qEADtahAMXWoQD/1qEA/9ahAP/WoQD/1qEAxdahAA/WoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAAbWoQDF1qEA/9ahAP/WoQD/1qEA/9ahAMXWoQAP1qEAANahAADWoQAA1qEAANahAADWoQAA1qEADtahAMXWoQD/1qEA/9ahAP/WoQD/1qEAxdahAAbWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAYtahAP/WoQD/1qEA/9ahAP/WoQDF1qEADtahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEADtahAMXWoQD/1qEA/9ahAP/WoQD/1qEAY9ahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQBf1qEA/9ahAP/WoQD/1qEAxdahAA7WoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEADtahAMXWoQD/1qEA/9ahAP/WoQBf1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAATWoQCg1qEA6tahAKjWoQAO1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEADtahAKjWoQDr1qEAoNahAATWoQAA1qEAANahAADWoQAA1qEAAP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A///////////AAAADgAAAAQAAAAAAAAAAA///wAf//+AP///wD///8A////AP///wDw/w8A8P8PAPD/DwDw/w8A8P8PAPD/DwD///8A////AH///gA///wAAAAAAAAAAAgAAAAcAAAAP8A8A/+AfgH/gP8B/4H/gf+D/8H/////8=
 // @connect           bilibili.com
@@ -97,6 +97,24 @@ $(function BiliChecker() {
 			followings: [233114659] // 碧蓝航线官方号的 UID
 		},
 		{
+			displayName: "碧蓝档案",
+			displayIcon: "https://i0.hdslb.com/bfs/face/f2635e09fe667d4ad29229c6ed0b5f4bdea09bd1.jpg@100w_100h.webp",
+			keywords: ["碧蓝档案", "#碧蓝档案"],
+			followings: [3493265644980448] // 碧蓝档案官方号的 UID
+		},
+		{
+			displayName: "尘白禁区",
+			displayIcon: "https://i0.hdslb.com/bfs/face/e2a7e30399860cfa7c1ec5c958ab9e519290e181.jpg@100w_100h.webp",
+			keywords: ["尘白禁区", "#尘白禁区"],
+			followings: [1409863611] // 尘白禁区官方号的 UID
+		},
+		{
+			displayName: "NIKKE胜利女神",
+			displayIcon: "https://i0.hdslb.com/bfs/face/cc690158528967d1c57586290e3be57edd4e6e47.jpg@100w_100h.webp", // 实在没有图标，先用情报站的头像
+			keywords: ["NIKKE", "胜利女神"],
+			followings: [1972404330] // NIKKE情报站的 UID
+		},
+		{
 			displayName: "VTuber",
 			displayIcon: "https://i0.hdslb.com/bfs/face/d399d6f5cf7943a996ae96999ba3e6ae2a2988de.jpg@100w_100h.webp",
 			keywords: ["雪蓮", "塔菲", "七海", "草莓猫", "嘉然", "乃琳", "珈乐", "贝拉"],
@@ -162,7 +180,7 @@ $(function BiliChecker() {
 			displayName: "初生科技",
 			displayIcon: "https://i0.hdslb.com/bfs/face/eb4c7bbea813eed3a92ee194809d85715e6a7659.jpg@100w_100h.webp",
 			// [禁止骂我！禁止拉黑！.jpg]
-			keywords: ["易语言", "编程猫", "scratch", "破解", "ramos", "winpe", "bsod", "memz", "MEMZ", "WindowsCE", "下崽器", "aero", "setup", "DWM", "CmzPrep", "虚拟机", "VMWare", "希沃白板", "Ubuntu PE", "PowerShell", "gnu/linux"],
+			keywords: ["易语言", "编程猫", "scratch", "ramos", "winpe", "bsod", "memz", "MEMZ", "WindowsCE", "下崽器", "aero", "setup", "DWM", "CmzPrep", "VMWare", "希沃白板", "Ubuntu PE", "PowerShell", "gnu/linux"],
 			followings: [
 				//- 组1/关键词:system -//
 				493998035, // SYSTEM-RAMOS-ZDY
@@ -413,6 +431,47 @@ $(function BiliChecker() {
 				1179374590, // MRJX_QWQ
 				82363089, // 小宇Boi
 				529452185, // 酸乳甜梅 QQ:3202902554 -来源:用户简介
+				3493146268797771, // 莪乃Vista叔
+				3493114847168983, // 易溶于水的澳涐
+				1733089232, // Windwos7
+				3493104831171448, // 万恶之源669
+				272743796, // 难忘的朱古力232
+				89062643, // 泠楠梓萌
+				1964181966, // Minedows
+				1218496648, // 新年代老登暴扣黑曼巴
+				1569663198, // B-windows10-user
+				3537107693865449, // 我是小r解说
+				1080519183,
+				443988102, // 何人哉er
+				3493111974071179, // 一只在tfs的野飞友
+				3493133344049877, // mc泰菲6
+				3493086852286877, // MC团长解说
+				1812413197, // F_are_well
+				514802302, // 不爱笑的黑客
+				261401138, // S15万分小拿小刚
+				1760573759, // 轻轻抚摸她的身体
+				1053425351, // End_Infinity
+				348877540, // FurryXH
+				21946608, // 是土豆哒
+				3493108075464919, // 组策略编辑器GPEDIT
+				652665076, // 1204992
+				1152576410, // 一个Minecraft用户
+				7955948, // FTG_Win11
+				1632975427, // KALI_MC
+				1317996804, // 新版B界萌新
+				272836680, // 13437855279
+				502257570, // 智慧的蓝屏之神-doge
+				1309042145, // pvpjjjj
+				417138, // 你的两位朋友
+				2005074146, // 小熊猫Firedoge
+				15052067, // Gelan丶
+				3299305, // qaqz111
+				405545981, // 德比鹤-鸡你太美
+				1487149980, // CHUANGWEI每日游戏推荐
+				686217254, // has_7_h0l1day
+				5337680, // 550W离线版
+				1971481152, // windowstaskmgr
+				673473165, // orangeATA
 			],
 			blacklist: [
 				//- 组1/关键词:system -//
@@ -664,6 +723,47 @@ $(function BiliChecker() {
 				1179374590, // MRJX_QWQ
 				82363089, // 小宇Boi
 				529452185, // 酸乳甜梅 QQ:3202902554 -来源:用户简介
+				3493146268797771, // 莪乃Vista叔
+				3493114847168983, // 易溶于水的澳涐
+				1733089232, // Windwos7
+				3493104831171448, // 万恶之源669
+				272743796, // 难忘的朱古力232
+				89062643, // 泠楠梓萌
+				1964181966, // Minedows
+				1218496648, // 新年代老登暴扣黑曼巴
+				1569663198, // B-windows10-user
+				3537107693865449, // 我是小r解说
+				1080519183,
+				443988102, // 何人哉er
+				3493111974071179, // 一只在tfs的野飞友
+				3493133344049877, // mc泰菲6
+				3493086852286877, // MC团长解说
+				1812413197, // F_are_well
+				514802302, // 不爱笑的黑客
+				261401138, // S15万分小拿小刚
+				1760573759, // 轻轻抚摸她的身体
+				1053425351, // End_Infinity
+				348877540, // FurryXH
+				21946608, // 是土豆哒
+				3493108075464919, // 组策略编辑器GPEDIT
+				652665076, // 1204992
+				1152576410, // 一个Minecraft用户
+				7955948, // FTG_Win11
+				1632975427, // KALI_MC
+				1317996804, // 新版B界萌新
+				272836680, // 13437855279
+				502257570, // 智慧的蓝屏之神-doge
+				1309042145, // pvpjjjj
+				417138, // 你的两位朋友
+				2005074146, // 小熊猫Firedoge
+				15052067, // Gelan丶
+				3299305, // qaqz111
+				405545981, // 德比鹤-鸡你太美
+				1487149980, // CHUANGWEI每日游戏推荐
+				686217254, // has_7_h0l1day
+				5337680, // 550W离线版
+				1971481152, // windowstaskmgr
+				673473165, // orangeATA
 			]
 		},
 		{
@@ -709,7 +809,7 @@ $(function BiliChecker() {
 		},
 		{
 			displayName: "英雄联盟",
-			displayIcon: "data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAAAAAzcoXhV4yk8GSFmvBki5/wUoGc8D13mPA5dZPwOXOR8DdujPA1a4zwNGuM8DZwkPAxcJPwMG6O8Dx/n/Azb4ThK3OS9FMnJv99JRL/hSIR/4MVB/9ZCgX/gw8C/3cRA/+OJgf/hyUH/4w0CP+INQj/hjMM/6U0D/9rLin/KHKT9ChrifAlDxL/OAAA/wQiNv8dV3b/H1Zz/zFZcf8oWG7/NGJ6/z5vgv9Fd4T/QHuM/z9LTv/HOQD/dCgU/yFqjPAhbY3wRRoY/7swAP9EIBv/D2CZ/y6Uzv8qksj/MJ7V/zWu7f8zq+v/L6zt/0DN//9Crsb/hCEA/4UxFv84eZbwI2uN8DUZF//ARgD/iCYA/wAtWf85msL/OZS6/wdKfv8IQGv/CUhy/wpflv8ijMj/RMj0/2pFLf+SPBH/NXSS8CJkiPAoEhb/uzQA/7AsAf8DLVj/QafQ/1y+yf8AAgj/EAAA/yoGAP84EAP/KR8u/x1+sv9ZdXn/fy0M/yVliPAdXX/wNBQU/8cjAP+gHAH/AzRf/0eu1/9YusX/PQoA/7A8Bf/cbBP/0l4B/5MpAP9GFw7/J0BR/1glHf8fXoHwI1988DYWFf+2HAD/jB8B/wg2X/9Grdf/Uq++/3wtEf/ddyH/6IQO/+KHEf/FbQ7/kDMA/3IwCf9FLib/I1l68Cllf/BFHRX/vygA/3wiAf8QOGP/TbTf/0qkuf9yKhL/0HUo/9dyCf/YgxX/3Iof/9VsBf++TQP/NBoU/yFZffAyZX3wPhwY/5ooAP+VNAD/ETlg/0Kw4f9Jprz/disR/8lpH//IYwL/xWMC/89vB//IYwP/oDYA/ywWFP8jVnjwOF5x8BoTGv9pIQD/mj8C/wo1XP8+qtj/Tqu9/4k/Fv/VeCb/ymoM/8NeAv/FYAb/xV0E/6I9AP8vGhr/Hk1t8EluhPAXFBv/aykA/5E8AP8MNFz/Q6nT/06ovf+SQQ7/zm4c/8VlEv+6WAP/tVAC/7NHAv+cNgD/Nhwa/zNhf/BRdo7wIhoc/6c8AP+HKwf/EU99/0Gr3P9AocX/eSkK/8VkHv+2WQ7/o0sD/5k9A/+bOQH/kSsA/zgdG/9EbYzwOmuJ8CsUFf9UBQD/OEpR/yZ4oP8YYpL/G22e/yEvP/+EMQv/rkAC/444AP9zJgD/hiIA/3gTAP8iEBT/M2SG8DdnjPQrICr/OBUW/yccIf8eERf/HRMW/yMUGP8jGiL/QhsY/1MbFP9KHhj/RB4Z/0YYFv9FFxX/NSQs/zhni/QqWXfhOW6W8DtskPBDcJTwNmOE8C1be/AvYIHwLGSF8C1kiPAnY4jwMG+R8DN1lvAvdJfwMHKS8Dl8oPAwX33hAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+			displayIcon: "https://lol.qq.com/favicon.ico",
 			keywords: ["英雄联盟", "LOL"],
 			followings: [
 				50329118, // 哔哩哔哩英雄联盟赛事官方号的 UID
@@ -749,6 +849,22 @@ $(function BiliChecker() {
 				49442838, // 格历奇GLITCH官方号的 UID
 			]
 		},
+		{
+			displayName: "彩虹六号：围攻",
+			displayIcon: "https://i0.hdslb.com/bfs/game/0f80bc73fc12a30c7f9c42f4e304a125f9aa1f10.jpg@100w_100h.webp",
+			keywords: ["彩虹6号：围攻", "彩虹六号", "彩六", "R6", "R6S", "Rainbow Six Siege"],
+			followings: [
+				1661612, // Hex今天切墙了吗
+				1932102, // 溪木的龙裔
+				3227461, // 乔伊奥斯托雷
+				3933162, // 蚊子
+				17098554, // 豆豆最棒
+				98991109, // 角社区
+				115545042, // 梅西杰的西餐厅
+				140403337, // 塔塔kira
+				415890389 // 高板大芥末
+			]
+		},
 	]
 
 	/*
@@ -767,7 +883,7 @@ $(function BiliChecker() {
 	const cardApiUrl = 'https://api.bilibili.com/x/web-interface/card?mid='
 	const spaceApiUrl = 'https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space?host_mid='
 	const followingApiUrl = 'https://api.bilibili.com/x/relation/followings?vmid='
-	
+
 	const searchIcon = `<svg width="12" height="12" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M16.3451 15.2003C16.6377 15.4915 16.4752 15.772 16.1934 16.0632C16.15 16.1279 16.0958 16.1818 16.0525 16.2249C15.7707 16.473 15.4456 16.624 15.1854 16.3652L11.6848 12.8815C10.4709 13.8198 8.97529 14.3267 7.44714 14.3267C3.62134 14.3267 0.5 11.2314 0.5 7.41337C0.5 3.60616 3.6105 0.5 7.44714 0.5C11.2729 0.5 14.3943 3.59538 14.3943 7.41337C14.3943 8.98802 13.8524 10.5087 12.8661 11.7383L16.3451 15.2003ZM2.13647 7.4026C2.13647 10.3146 4.52083 12.6766 7.43624 12.6766C10.3517 12.6766 12.736 10.3146 12.736 7.4026C12.736 4.49058 10.3517 2.1286 7.43624 2.1286C4.50999 2.1286 2.13647 4.50136 2.13647 7.4026Z" fill="currentColor"></path></svg>`
 	const checkButton = `<div class="composition-checkable"><div class="composition-badge-control"><a class="composition-name-control" title="点击查询用户成分">${searchIcon}</a></div></div>`
 	const checked = {}
@@ -1101,7 +1217,7 @@ $(function BiliChecker() {
 									${icon}
 								</div>
 								<div style="margin-top: 8px;">
-									<div class="composition-name">原因：${value[i].reason}</div>
+									<div class="composition-name">原因：${value[i].reason}${typeof value[i].item === 'string' ? "（" + value[i].item + "）" : ""}</div>
 									<div class="composition-name">匹配：${reason}</div>
 								</div>
 							</div>`;
@@ -1201,10 +1317,10 @@ $(function BiliChecker() {
 	function setting(conf_name, tips) {
 		if (GM_getValue(conf_name) === 'true') {
 			GM_setValue(conf_name, 'false');
-			message.info('<span>已禁用 ' + tips + '<br/>刷新后生效，点我将刷新页面。</span>');
+			message.info(`已禁用 ${tips}<br/>刷新后生效。`, true);
 		} else {
 			GM_setValue(conf_name, 'true');
-			message.info('<span>已启用 ' + tips + '<br/>刷新后生效，点我将刷新页面。</span>');
+			message.info(`已启用 ${tips}<br/>刷新后生效。`, true);
 		}
 	}
 
@@ -1306,7 +1422,7 @@ $(function BiliChecker() {
 							${icon}
 						</div>
 						<div style="margin-top: 12px;">
-							<div class="composition-name">原因：${value[i].reason}</div>
+							<div class="composition-name">原因：${value[i].reason}${typeof value[i].item === 'string' ? "（" + value[i].item + "）" : ""}</div>
 							<div class="composition-name">匹配：${reason}</div>
 						</div>
 					</div>`;
@@ -1343,11 +1459,11 @@ $(function BiliChecker() {
 	}
 
 	if (GM_getValue('Auto') === 'true') {
-		GM_registerMenuCommand('自动检测用户成分：✅ 已启用', function () {
+		GM_registerMenuCommand('自动检测用户成分(易触发风控)：✅ 已启用', function () {
 			setting('Auto', '自动检测用户成分')
 		});
 	} else {
-		GM_registerMenuCommand('自动检测用户成分：❌ 已禁用', function () {
+		GM_registerMenuCommand('自动检测用户成分(易触发风控)：❌ 已禁用', function () {
 			setting('Auto', '自动检测用户成分')
 		});
 	}
@@ -1360,7 +1476,7 @@ $(function BiliChecker() {
 		style.rel = 'stylesheet';
 		style.id = id;
 		tag === 'style' ? style.innerHTML = css : style.href = css;
-		doc.getElementsByTagName('head')[0].appendChild(style);
+		doc.getElementsByTagName('body')[0].appendChild(style);
 	}
 
 	function addCheckerStyle(text) {
@@ -1382,20 +1498,8 @@ $(function BiliChecker() {
 			.swal2-close {position:absolute;top:1px;right:1px;transition: all 0.2s ease;}
 			div:where(.swal2-container) .swal2-html-container{padding: 1.3em 1.3em 0.3em;}
 			div:where(.swal2-container) button:where(.swal2-close):hover {color:${color}!important;font-size:60px!important}
-			div:where(.swal2-icon) {
-				position: relative !important;
-				box-sizing: content-box !important;
-				justify-content: center !important;
-				width: 5em !important;
-				height: 5em !important;
-				margin: 2.5em auto .6em !important;
-				border: 0.25em solid !important;
-				border-radius: 50% !important;
-				font-family: inherit !important;
-				line-height: 5em !important;
-				cursor: default !important;
-				user-select: none !important;
-			}`;
+			div:where(.swal2-icon) .swal2-icon-content {font-family: sans-serif;}
+			`;
 		let bilicss = `
 			[class^="composition-check"] {
 				display: inline-block !important;
@@ -1481,41 +1585,47 @@ $(function BiliChecker() {
 	};
 
 	// 准备好右上角的Toast提示
-	let toast = Swal.mixin({
-		toast: true,
-		position: 'bottom-end',
-		showConfirmButton: false,
-		timer: 2700,
-		heightAuto: false,
-		scrollbarPadding: false,
-		timerProgressBar: true,
-		didOpen: (toast) => {
-			toast.addEventListener('mouseenter', Swal.stopTimer);
-			toast.addEventListener('mouseleave', Swal.resumeTimer);
-			toast.addEventListener('click', () => {
-				window.location.reload(); // 刷新
-			});
+	async function toast(type = 'success', text, refreshOnClick = false) {
+		let dialog = await Swal.mixin({
+			toast: true,
+			position: 'bottom-start',
+			showConfirmButton: refreshOnClick,
+			confirmButtonText: '刷新',
+			showCloseButton: true,
+			timer: 5000,
+			scrollbarPadding: true,
+			timerProgressBar: true,
+			didOpen: (toast) => {
+				toast.addEventListener('mouseenter', Swal.stopTimer);
+				toast.addEventListener('mouseleave', Swal.resumeTimer);
+				// 如果需要刷新页面的标志存在，则添加点击事件
+
+			}
+		}).fire({ html: `<span>${text}</span>`, icon: type })
+		if (dialog.isConfirmed && refreshOnClick) {
+			window.location.reload(); // 刷新
 		}
-	});
+	}
 
 	// 提示信息
 	const message = {
-		success: (text) => {
-			toast.fire({ html: text, icon: 'success' });
+		success: (text, refresh = false) => {
+			toast('success', text, refresh)
 		},
-		error: (text) => {
-			toast.fire({ html: text, icon: 'error' });
+		error: (text, refresh = false) => {
+			toast('error', text, refresh)
 		},
-		warning: (text) => {
-			toast.fire({ html: text, icon: 'warning' });
+		warning: (text, refresh = false) => {
+			toast('warning', text, refresh)
 		},
-		info: (text) => {
-			toast.fire({ html: text, icon: 'info' });
+		info: (text, refresh = false) => {
+			toast('info', text, refresh)
 		},
-		question: (text) => {
-			toast.fire({ html: text, icon: 'question' });
+		question: (text, refresh = false) => {
+			toast('question', text, refresh)
 		}
 	};
+
 
 	class CodeError extends Error {
 		constructor(message) {
@@ -1550,12 +1660,49 @@ $(function BiliChecker() {
 					},
 				});
 
-				let followingRequest = request({
-					url: followingApiUrl + id,
-					headers: {
-						'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36',
-					},
-				});
+				async function followingRequest() {
+					let page = 1, totalFollowings, fetchedFollowings = [], maxPages = 5, pageSize, totalPages;
+					while (true) {
+						try {
+							let followingContent = await request({
+								url: `${followingApiUrl}${id}&pn=${page}`,
+								headers: {
+									'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36',
+								},
+							});
+							if (followingContent.code === 0) {
+								let following = followingContent.data.list.map(it => it.mid);
+								fetchedFollowings = fetchedFollowings.concat(following);
+
+								if (page === 1) {
+									totalFollowings = followingContent.data.total; // 获取关注总数
+									pageSize = followingContent.data.list.length; // 获取每页数量
+
+									// 计算，先得到 大致页数 并与 最多可获取页数 对比然后取其中最小数
+									totalPages = Math.min(Math.ceil(totalFollowings / pageSize), maxPages);
+									if (totalPages === 1) break; // 只有一页时，直接结束
+								}
+								if (page >= totalPages) break; // 达到最大页数时结束
+								page++; // 获取下一页
+							} else if (followingContent.code === 22115) {
+								console.warn(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的关注列表的第 ${page} 页失败，对方已关闭展示关注列表，错误码：${followingContent.code}`);
+								break;
+							} else if (followingContent.code === -352) {
+								console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的关注列表的第 ${page} 页失败，已触发哔哩哔哩风控，错误码：${followingContent.code}`);
+								break;
+							} else {
+								if (fetchedFollowings.length > 0) {
+									if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的关注列表的第 ${page} 页失败，错误码：${followingContent.code}`);
+								} else {
+									throw new CodeError(`获取关注列表失败，错误码：${followingContent.code}`);
+								}
+							}
+						} catch (error) {
+							throw new CodeError(error);
+						}
+					}
+					return fetchedFollowings;
+				}
 
 				console.log(`【（改）B站成分检测器】即时\n正在检查用户 ${name} ${id} 的成分...`);
 
@@ -1564,15 +1711,13 @@ $(function BiliChecker() {
 					for (let rule of checkers) {
 						if (rule.blacklist) {
 							for (let mid of rule.blacklist) {
-								if (id.includes(mid)) {
-									if (!found.includes(rule)) {
-										found.push({
-											...rule,
-											reason: `黑名单`,
-											keyword: "uid" + mid
-										});
-										if (single) break;
-									}
+								if (id.includes(mid) && !found.includes(rule)) {
+									found.push({
+										...rule,
+										reason: `黑名单`,
+										keyword: "uid" + mid
+									});
+									if (single) break;
 								}
 							}
 						}
@@ -1591,11 +1736,9 @@ $(function BiliChecker() {
 								for (let i = 0; i < items.length; i++) {
 									let itemContent = items[i]
 									let spacefull = items;
-									let pendant = itemContent.modules?.module_author?.avatar?.pendant?.text
 									let content = itemContent.modules?.module_dynamic?.desc?.text
 									if (
-										pendant && spacefull && content &&
-										rule.keywords.find(keyword => JSON.stringify(pendant).includes(keyword)) &&
+										spacefull && content &&
 										rule.keywords.find(keyword => JSON.stringify(spacefull).includes(keyword)) &&
 										rule.keywords.find(keyword => JSON.stringify(content).includes(keyword))
 									) {
@@ -1604,15 +1747,7 @@ $(function BiliChecker() {
 											full: items[i],
 											reason: `空间动态正文`,
 											item: content,
-											keyword: rule.keywords.find(keyword => JSON.stringify(spacefull).includes(keyword))
-										});
-										if (single) break;
-									} else if (spacefull && rule.keywords.find(keyword => JSON.stringify(spacefull).includes(keyword))) {
-										found.push({
-											...rule,
-											reason: `用户空间内容(动态/简介/认证)`,
-											item: items,
-											keyword: rule.keywords.find(keyword => JSON.stringify(items).includes(keyword))
+											keyword: rule.keywords.find(keyword => JSON.stringify(content).includes(keyword))
 										});
 										if (single) break;
 									}
@@ -1634,34 +1769,19 @@ $(function BiliChecker() {
 
 				// 检查关注列表
 				try {
-					let followingContent = await followingRequest;
-					if (followingContent.code === 0) {
-						let following = followingContent.data.list.map(it => it.mid)
-						for (let rule of checkers) {
-							if (rule.followings) {
-								for (let mid of rule.followings) {
-									if (following.includes(mid)) {
-										if (!found.includes(rule)) {
-											found.push({
-												...rule,
-												uid: "uid" + mid,
-												reason: `关注列表`
-											});
-											if (single) break;
-										}
-									}
+					let following = await followingRequest()
+					for (let rule of checkers) {
+						if (rule.followings) {
+							for (let mid of rule.followings) {
+								if (following.includes(mid) && !found.includes(rule)) {
+									found.push({
+										...rule,
+										uid: "uid" + mid,
+										reason: `关注列表`
+									});
+									if (single) break;
 								}
 							}
-						}
-					} else if (followingContent.code === 22115) {
-						console.warn(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的关注列表失败，对方已关闭展示关注列表，错误码：${followingContent.code}`);
-					} else if (followingContent.code === -352) {
-						console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的关注列表失败，已触发哔哩哔哩风控，错误码：${followingContent.code}`);
-					} else {
-						if (found.length > 0) {
-							if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的关注列表失败，错误码：${followingContent.code}`);
-						} else {
-							reject(new CodeError(`获取关注列表失败，错误码：${followingContent.code}`));
 						}
 					}
 				} catch (error) {
