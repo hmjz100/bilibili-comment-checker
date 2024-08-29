@@ -749,6 +749,21 @@ $(function BiliChecker() {
 				49442838, // 格历奇GLITCH官方号的 UID
 			]
 		},
+		{
+			displayName: "彩虹6号：围攻",
+			displayIcon: "https://av.huijiwiki.com/site_avatar_r6s_l.png", // 先从灰机上抓一个图标来凑合（x
+			keywords: ["彩虹6号：围攻", "彩虹六号", "彩六", "R6", "R6S", "Rainbow Six Siege"],
+			followings: [
+				1661612, // Hex今天切墙了吗
+				1932102, // 溪木的龙裔
+				98991109, // 角社区
+				17098554, // 豆豆最棒
+				415890389, // 高板大芥末
+				3227461, // 乔伊奥斯托雷
+				140403337, // 塔塔kira
+				3933162, // 蚊子
+				115545042, // 梅西杰的西餐厅
+			]
 	]
 
 	/*
