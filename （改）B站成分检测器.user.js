@@ -197,7 +197,7 @@ $(function BiliChecker() {
 				236574844, // Minecraft小救星
 				486511101, // Minecraft-RIC
 				1670040346, // Minecraft-Curios
-				
+
 			]
 		},
 		{
@@ -228,9 +228,9 @@ $(function BiliChecker() {
 		{
 			displayName: "小马宝莉",
 			displayIcon: "https://xc.null.red:8043/XCimg/img/save/2024/08/30/image-108006778.png",
-			keywords: ["小马", "马迷", "mlp", "MLP", "彩虹小马", "esq", "ESQ"],
+			keywords: ["mlp", "小马", "宝莉", "PP", "AJ", "RR", "RD", "TS", "FS", "云宝", "碧琪", "萍琪", "暮光", "暮暮", "紫悦", "小蝶", "瑞瑞", "星光", "虹林檎", "序蝶", "粉毛组", "pony", "图书组"],
 			followings: [
-		                18251508, //千景
+		                        18251508, //千景
                                 3546559893473298, //暗冥优莉
                                 66970100, //LUMO_Xu
                                 1625041793, //Eastquestria-东马厂牌
@@ -324,6 +324,42 @@ $(function BiliChecker() {
                                 12719091, //习成PBU
                                 12651008, //虹云彼方
 			]
+		},
+		{
+			displayName: "反恐精英CS",
+			displayIcon: "https://xc.null.red:8043/XCimg/img/save/2024/08/30/image-972665359.png",
+			keywords: ["cs", "cs2", "csgo", "cs:go", "反恐精英", "5e", "完美平台", "B5", "沙二", "沙2", "核子危机", "炙热沙城", "远古遗迹", "殒命大厦", "炼狱小镇", "死亡游乐园", "完美时刻", "跳投", "g2", "navi", "s1mple", "major", ],
+            followings: [
+                48455786, //csgo国服
+                474595627, //csgo官方赛事
+                381435385, //茄子
+                437744340, //王喜顺
+                25195727, //ququ
+                512105432, //玉麒麟
+                2183230, //玩机器
+                472514992, //navi
+                480810988, //g2
+                373076765, //tyloo
+                1497263761, //哑巴老六
+                384942089, //德云两鬼
+                203680252, //aycs2
+                317953117, //csgo-miku
+                9838560, //菊咕咕
+                22192872, //igxe
+                645647361, //BUFF
+                3494376720304904, //kennys
+                409588881, //csboy
+                309491479, //内格夫
+
+                        ]
+		},
+        {
+			displayName: "孙笑川258",
+			displayIcon: "https://xc.null.red:8043/XCimg/img/save/2024/08/30/image-1169456464.png",
+			keywords: ["孙笑川", "笑川", ],
+            followings: [
+                402574397, //孙笑川258
+                        ]
 		},
 		{
 			displayName: "初生科技",
@@ -1314,7 +1350,7 @@ $(function BiliChecker() {
 				console.log(`【（改）B站成分检测器】缓存\n检测到 ${name} ${id} 的成分为\n`, JSON.parse(JSON.stringify(found.map(it => { return { name: it.displayName, reason: it.reason, item: it.item, keyword: it.keyword, uid: it.uid, full: it.full } }))))
 			} else {
 				console.log(`【（改）B站成分检测器】缓存\n检测到 ${name} ${id} 的成分为 无`)
-				elemload.text('无')
+				elemload.text('无，可能是该用户设置了权限或是关注数量太多')
 				elemload.attr('title', '点击查看已查询过的用户')
 				elemload.on('click', function () {
 					showAllUser()
@@ -1390,7 +1426,7 @@ $(function BiliChecker() {
 									installComposition(rule, elements.elemload, elements.eleminst, elements.elemcss);
 								}
 							} else {
-								elements.elemload.text('无');
+								elements.elemload.text('无，可能是该用户设置了权限或是关注数量太多');
 								elements.elemload.attr('title', '点击查看已查询过的用户');
 								elements.elemload.on('click', function () {
 									showAllUser();
@@ -1399,7 +1435,7 @@ $(function BiliChecker() {
 						}
 					} else {
 						for (let elements of checking[id]) {
-							elements.elemload.text('无');
+							elements.elemload.text('无，可能是该用户设置了权限或是关注数量太多');
 							elements.elemload.attr('title', '点击查看已查询过的用户');
 							elements.elemload.on('click', function () {
 								showAllUser();
@@ -1426,6 +1462,9 @@ $(function BiliChecker() {
 	<div id="tips">因判断关键词较为广泛，可能会出现误杀的现象</div>
 	<div id="tips">脚本还在测试阶段，喜欢的话还请留下你的评论</div>
 	<div id="tips">Ctrl+F 可以快速搜索</div>
+    <div id="tips">因为B站只允许查看用户前五页关注列表，所以用户</div>
+    <div id="tips">关注数量过多、将关注列表设为隐私时可能无法完整</div>
+    <div id="tips">提取成分</div>
 	${dom}</div>`;
 	function showAllUser() {
 		Swal.fire({
