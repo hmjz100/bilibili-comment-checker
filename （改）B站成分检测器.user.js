@@ -181,7 +181,7 @@ $(function BiliChecker() {
 			displayIcon: "🐎",
 			keywords: ["小马", "马迷", "mlp", "MLP", "彩虹小马", "esq", "ESQ"],
 			followings: [
-				18251508, //千景
+		18251508, //千景
                 3546559893473298, //暗冥优莉
                 66970100, //LUMO_Xu
                 1625041793, //Eastquestria-东马厂牌
