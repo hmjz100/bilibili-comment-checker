@@ -157,7 +157,13 @@ $(function BiliChecker() {
 			displayName: "三国杀",
 			displayIcon: "https://i0.hdslb.com/bfs/face/fe2e1a6e3dc702a6c91378e096ef37ca71bf4629.jpg@100w_100h.webp",
 			keywords: ["互动抽奖 #三国杀", "#三国杀", "三国杀", "#2023三国杀"],
-			followings: [1254932367] // 三国杀十周年官方号的 UID
+			followings: [
+				1254932367, // 三国杀十周年官方号的 UID
+				587050283,  // 三国杀手杀官方号的 UID
+				1672821212, // 三国杀OL官方号的 UID
+				43292408,   // 三国杀官方赛事号的 UID
+				1738180662, // 欢乐三国杀官方号的 UID
+			]
 		},
 		{
 			displayName: "Minecraft",
