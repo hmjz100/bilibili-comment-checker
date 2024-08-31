@@ -1,10 +1,12 @@
 // ==UserScript==
 // @name              （改）B站成分检测器
-// @version           2.0.0
+// @version           2.0.1
 // @author            hmjz100,xulaupuz,trychen
 // @namespace         github.com/hmjz100
 // @license           GPLv3
-// @description       《也许同类型中最好用？》系列 - B站评论区自动标注成分，支持动态和关注识别以及手动输入 UID 识别，默认标注包括抽奖、原神、崩坏3、崩坏星穹铁道、绝区零、鸣潮、战双帕弥什、少女前线、少女前线2、明日方舟、碧蓝航线、VTuber、Asoul、王者荣耀、三国杀、Minecraft、迷你世界、初生科技、穿越火线、地下城与勇士、绝地求生、英雄联盟、第五人格、蛋仔派对、GLITCH、碧蓝档案、尘白禁区、NIKKE胜利女神、彩虹六号：围攻。
+// @description       《也许同类型中最好用？》系列 - B站评论区自动标注成分，支持动态和关注识别以及手动输入 UID 识别，默认标注包括抽奖、原神、崩坏3、崩坏星穹铁道、绝区零、鸣潮、战双帕弥什、少女前线、少女前线2、明日方舟、碧蓝航线、碧蓝档案、尘白禁区、NIKKE胜利女神、VTuber、Asoul、王者荣耀、和平精英、三国杀、Minecraft、迷你世界、初生科技、Roblox、火影忍者、暗区突围、香肠派对、穿越火线、地下城与勇士、绝地求生、英雄联盟、魔兽世界、CSGO、第五人格、蛋仔派对、GLITCH、彩虹六号：围攻、小马宝莉、孙笑川258、学生、互助。
+// @homepage          https://github.com/hmjz100/bilibili-comment-checker/
+// @supportURL        https://github.com/hmjz100/bilibili-comment-checker/issues
 // @match             *://*.bilibili.com/*
 // @icon              data:image/x-icon;base64,AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAABMLAAATCwAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A1qEAANahAADWoQAG1qEAb9ahAMvWoQD01qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD01qEAy9ahAG/WoQAG1qEAANahAADWoQAA1qEAG9ahAM/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahANDWoQAb1qEAANahAAfWoQDQ1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahANHWoQAH1qEAbtahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAG7WoQDH1qEA/9ahAP/WoQD/1qEAtdahABjWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahABvWoQC11qEA/9ahAP/WoQD/1qEAx9ahAPnWoQD/1qEA/9ahAP/WoQAZ1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahABjWoQD/1qEA/9ahAP/WoQDz1qEA/9ahAP/WoQD/1qEA/9ahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAErWoQDn1qEA5NahAErWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAErWoQDn1qEA5NahAErWoQAA1qEAANahAADWoQAA1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEA5tahAP/WoQD/1qEA59ahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEA5tahAP/WoQD/1qEA59ahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEA5tahAP/WoQD/1qEA5tahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEA5tahAP/WoQD/1qEA5tahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAADWoQAA1qEAANahAADWoQBJ1qEA5tahAObWoQBJ1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQBJ1qEA5tahAObWoQBJ1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEA+dahAP/WoQD/1qEA/9ahABnWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAGdahAP/WoQD/1qEA/9ahAPjWoQDH1qEA/9ahAP/WoQD/1qEAttahABnWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahABnWoQC21qEA/9ahAP/WoQD/1qEAx9ahAG3WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQBt1qEABtahAM/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA0NahAAfWoQAA1qEAG9ahAM/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAM/WoQAb1qEAANahAADWoQAA1qEABtahAG7WoQDH1qEA89ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA89ahAMfWoQBu1qEABtahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEADtahAMXWoQD/1qEA/9ahAP/WoQD/1qEAxdahAA/WoQAA1qEAANahAADWoQAA1qEADtahAMXWoQD/1qEA/9ahAP/WoQD/1qEAxdahAA/WoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAAbWoQDF1qEA/9ahAP/WoQD/1qEA/9ahAMXWoQAP1qEAANahAADWoQAA1qEAANahAADWoQAA1qEADtahAMXWoQD/1qEA/9ahAP/WoQD/1qEAxdahAAbWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAYtahAP/WoQD/1qEA/9ahAP/WoQDF1qEADtahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEADtahAMXWoQD/1qEA/9ahAP/WoQD/1qEAY9ahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQBf1qEA/9ahAP/WoQD/1qEAxdahAA7WoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEADtahAMXWoQD/1qEA/9ahAP/WoQBf1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAATWoQCg1qEA6tahAKjWoQAO1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEADtahAKjWoQDr1qEAoNahAATWoQAA1qEAANahAADWoQAA1qEAAP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A///////////AAAADgAAAAQAAAAAAAAAAA///wAf//+AP///wD///8A////AP///wDw/w8A8P8PAPD/DwDw/w8A8P8PAPD/DwD///8A////AH///gA///wAAAAAAAAAAAgAAAAcAAAAP8A8A/+AfgH/gP8B/4H/gf+D/8H/////8=
 // @connect           bilibili.com
@@ -14,6 +16,7 @@
 // @grant             GM.xmlHttpRequest
 // @grant             GM_registerMenuCommand
 // @grant             GM_getResourceText
+// @grant             unsafeWindow
 // @require           https://unpkg.com/jquery@3.6.0/dist/jquery.min.js
 // @require           https://unpkg.com/sweetalert2@11/dist/sweetalert2.min.js
 // @resource Swal     https://unpkg.com/sweetalert2@11/dist/sweetalert2.min.css
@@ -23,10 +26,13 @@
 $(function BiliChecker() {
 	// 是否在控制台显示错误消息
 	let debug = false;
-	/* 注释~
-	在这里配置要检查的成分，或者直接拉黑（使用指定UID评论的人会被直接添加标签）。
-	假设你要直接给指定UID添加一个标签的话，就这样写：blacklist: [1234567890,0987654321]
-	*/
+	/**
+	 * 注释~
+	 * 在这里配置要检查的成分，或者直接拉黑（使用指定UID评论的人会被直接添加标签）。
+	 * 假设你要直接给指定UID添加一个标签的话，就这样写：blacklist: [1234567890,0987654321]
+	 * 成分列表后有一个 支持含注释快速排序UID 的函数，到了那里，您可以查看相关使用说明
+	 * 借此脚本守护我们最好的噼里啪啦捏~
+	 */
 	const checkers = [
 		{
 			displayName: "抽奖",
@@ -110,7 +116,7 @@ $(function BiliChecker() {
 		},
 		{
 			displayName: "NIKKE胜利女神",
-			displayIcon: "https://i0.hdslb.com/bfs/face/cc690158528967d1c57586290e3be57edd4e6e47.jpg@100w_100h.webp", // 实在没有图标，先用情报站的头像
+			displayIcon: "https://i0.hdslb.com/bfs/face/cc690158528967d1c57586290e3be57edd4e6e47.jpg@100w_100h.webp",
 			keywords: ["NIKKE", "胜利女神"],
 			followings: [1972404330] // NIKKE情报站的 UID
 		},
@@ -119,15 +125,15 @@ $(function BiliChecker() {
 			displayIcon: "https://i0.hdslb.com/bfs/face/d399d6f5cf7943a996ae96999ba3e6ae2a2988de.jpg@100w_100h.webp",
 			keywords: ["雪蓮", "塔菲", "七海", "草莓猫", "嘉然", "乃琳", "珈乐", "贝拉"],
 			followings: [
-				1437582453, // 東雪蓮Official
-				1265680561, // 永雏塔菲
+				351609538, // 珈乐Carol
 				434334701, // 七海Nana7mi
-				1210816252, // 草莓猫Taffy
 				672328094, // 嘉然今天吃什么
 				672342685, // 乃琳Queen
-				351609538, // 珈乐Carol
 				672346917, // 向晚大魔王
 				672353429, // 贝拉kira
+				1210816252, // 草莓猫Taffy
+				1265680561, // 永雏塔菲
+				1437582453, // 東雪蓮Official
 			]
 		},
 		{
@@ -149,23 +155,73 @@ $(function BiliChecker() {
 			displayIcon: "https://i0.hdslb.com/bfs/face/effbafff589a27f02148d15bca7e97031a31d772.jpg@100w_100h.webp",
 			keywords: ["互动抽奖 #王者荣耀", "#王者荣耀", "王者荣耀"],
 			followings: [
-				57863910, // 王者荣耀
+				57863910, // 王者荣耀官方号的 UID
 				392836434, // 哔哩哔哩王者荣耀赛事
 			]
 		},
 		{
+			displayName: "和平精英",
+			displayIcon: "https://i0.hdslb.com/bfs/game/4671ad7ca71645c3cf6186d99c0792c3d136a977.jpg@100w_100h.webp",
+			keywords: ["互动抽奖 #和平精英", "#和平精英", "和平精英"],
+			followings: [
+				434786180, // 和平精英官方号的 UID
+				50329337, // PEL和平精英职业联赛
+				522214928, // 江苏KONE和平精英分部
+				387752366, // AG-和平精英
+				638285563, // WBG和平精英战队
+				481783021, // LGD_和平精英
+			]
+		},
+		{
 			displayName: "三国杀",
-			displayIcon: "https://i0.hdslb.com/bfs/face/fe2e1a6e3dc702a6c91378e096ef37ca71bf4629.jpg@100w_100h.webp",
+			displayIcon: "https://i0.hdslb.com/bfs/face/53f3ea77172036fba4d70fb0945abe6738349779.jpg@100w_100h.webp",
 			keywords: ["互动抽奖 #三国杀", "#三国杀", "三国杀", "#2023三国杀"],
-			followings: [1254932367] // 三国杀十周年官方号的 UID
+			followings: [
+				1254932367, // 三国杀十周年官方号的 UID
+				1672821212, // 三国杀OL互通版手游官方号的 UID
+				1738180662, // 欢乐三国杀官方号的 UID
+				587050283, // 三国杀移动版官方号的 UID
+				43292408, // 三国杀官方赛事
+			]
 		},
 		{
 			displayName: "Minecraft",
 			displayIcon: "https://i0.hdslb.com/bfs/face/c5578966c447a70edf831bbf7e522b7be6090fea.jpg@100w_100h.webp",
-			keywords: ["我的世界", "minecraft", "#我的世界", "我的世界拜年祭", "MCBBS", "我的世界中文论坛", "MC玩家"],
+			keywords: ["我的世界", "minecraft", "#我的世界", "我的世界拜年祭", "MCBBS", "我的世界中文论坛", "MC玩家", "MC服务器"],
 			followings: [
 				43310262, // 我的世界官方号的 UID
 				39914211, // 我的世界中文论坛(MCBBS)官方号的 UID
+				686127, // 籽岷
+				1503187, // 和谐号舰长
+				2170934, // 明月庄主
+				5836069, // 脏小豆
+				13337125, // GoldenEggs
+				22083989, // 节操Pro
+				22890621, // 宏二NordWes
+				34456580, // 药儿哟
+				35734399, // 小橙子姐姐解说
+				35925939, // 两幺六
+				53055540, // GW漫游大作战
+				96498913, // PoetJamil
+				165025941, // 大马哈鱼47
+				170651403, // 邹陈云飞
+				236574844, // Minecraft小救星
+				243681035, // wuli小周
+				288309681, // TianKong_y
+				362024317, // 哦还活着
+				390527713, // 史蒂猪StevenPig
+				393112610, // 上海交通大学Minecraft社
+				434736287, // Minecraft_传送门
+				470839152, // 图图图酱吖
+				486511101, // Minecraft-RIC
+				490670548, // Minecraft-ICE
+				614678902, // Crawler工作室
+				631881755, // 豆哥啦
+				661547786, // 绯色色i
+				1183597757, // 米可-Micro
+				1377901474, // 东南大学Minecraft社
+				1670040346, // Minecraft-Curios
+				3546631009995059, // SquaredMedia官方频道
 			]
 		},
 		{
@@ -174,6 +230,23 @@ $(function BiliChecker() {
 			keywords: ["mnsj", "迷你世界", "miniworld", "#迷你世界", "迷你世界拜年祭"],
 			followings: [
 				470935187, // 迷你世界官方号的 UID
+				51494691, // 迷你世界果冻呀
+				328368589, // 迷你世界王不畏解说
+				606753153, // 迷你世界狗蛋
+				1001979471, // 迷你世界果冻丫
+				1110563414, // 紫枫一迷你世界
+				1272155030, // 迷你世界半拉
+				1541734600, // 迷你世界二驴
+				1546135282, // 迷你世界汉堡吖mini
+				1578117313, // 迷你世界辣条吖
+				1586479234, // 迷你世界小白吖
+				1659178469, // 迷你世界柒柒姐
+				1823344826, // 汉堡迷你世界v
+				1862951948, // 迷你世界白熊
+				3493074967726714, // 迷你世界奶糖v
+				3493075015960752, // 迷你世界奶茶v
+				3493113479825578, // 迷你世界-拆
+				3493257967307320, // 迷你世界小哆啦吖
 			]
 		},
 		{
@@ -472,6 +545,52 @@ $(function BiliChecker() {
 				5337680, // 550W离线版
 				1971481152, // windowstaskmgr
 				673473165, // orangeATA
+				277995137, // EnderCraft
+				273727645, // Bili-Tube
+				483680764, // Kuewwc QQ群:566766266 验证:9D5A -来源:用户简介
+				204809809,
+				1008072191, // 神金且抽象的鼓手
+				383897380, // ThisPC的Bili官方頻道 网站:senpai.114514.cloudns.be 邮箱:ruich97@icloud.com -来源:用户简介
+				496728862, // YUDS_清风
+				487291887, // Saber_White
+				551120966, // JustJaye233
+				525078314, // msstart
+				405543129, // Franklin-浩辰
+				480498743, // 山猹qwq
+				367151287, // A奶味伏特加
+				516443571, // 46102837537
+				2064265859, // 126com2012949294
+				365166874, // RZ-world
+				513458998, // Bf109G-10
+				590428323, // gbxrr
+				594779227, // 星弈社-暖言鸢猫猫SE
+				448815938, // MisakaPothole
+				1102137180, // 也数据发
+				1657379991, // 龙哥之哥
+				518020596, // 360小精灵qwq
+				395177787, // Android-TSK
+				436415283, // 无惧死机
+				513898841, // 无聊的路人家
+				627007091, // 你永远的二爷
+				1254215732, // 汪庭纬
+				2030178992, // ExemExp
+				479401385, // 风梓_wwt
+				1930623048,
+				498370133, // Huan_XLZ558
+				511131590, // TTHorror红熔
+				1991535809, // TongTong1071
+				1235828103, // 无言_WYAN
+				493936144, // 御坂妹10010号
+				1639826047, // 一个账号一部手机
+				600328664, // 王宾汉
+				501319924, // Code_Box
+				3493082699926050, // 陈沉尘CSY2022
+				107238284, // 奇怪的小羊减少了
+				590569754, // 和你heni
+				592551597, // 东风Cherrier账号 邮箱:chengowen6@outlook.com -来源:用户简介
+				522669301, // xmwpumpkin528
+				3546675725470229, // 树眼镜蛇归来
+				3546655280335698, // 小小的口腔溃疡
 			],
 			blacklist: [
 				//- 组1/关键词:system -//
@@ -764,6 +883,136 @@ $(function BiliChecker() {
 				5337680, // 550W离线版
 				1971481152, // windowstaskmgr
 				673473165, // orangeATA
+				277995137, // EnderCraft
+				273727645, // Bili-Tube
+				483680764, // Kuewwc QQ群:566766266 验证:9D5A -来源:用户简介
+				204809809,
+				1008072191, // 神金且抽象的鼓手
+				383897380, // ThisPC的Bili官方頻道 网站:senpai.114514.cloudns.be 邮箱:ruich97@icloud.com -来源:用户简介
+				496728862, // YUDS_清风
+				487291887, // Saber_White
+				551120966, // JustJaye233
+				525078314, // msstart
+				405543129, // Franklin-浩辰
+				480498743, // 山猹qwq
+				367151287, // A奶味伏特加
+				516443571, // 46102837537
+				2064265859, // 126com2012949294
+				365166874, // RZ-world
+				513458998, // Bf109G-10
+				590428323, // gbxrr
+				594779227, // 星弈社-暖言鸢猫猫SE
+				448815938, // MisakaPothole
+				1102137180, // 也数据发
+				1657379991, // 龙哥之哥
+				518020596, // 360小精灵qwq
+				395177787, // Android-TSK
+				436415283, // 无惧死机
+				513898841, // 无聊的路人家
+				627007091, // 你永远的二爷
+				1254215732, // 汪庭纬
+				2030178992, // ExemExp
+				479401385, // 风梓_wwt
+				1930623048,
+				498370133, // Huan_XLZ558
+				511131590, // TTHorror红熔
+				1991535809, // TongTong1071
+				1235828103, // 无言_WYAN
+				493936144, // 御坂妹10010号
+				1639826047, // 一个账号一部手机
+				1907177406, // Z会的卡通猫 QQ群:215684585 -来源:用户简介
+				600328664, // 王宾汉
+				501319924, // Code_Box
+				3493082699926050, // 陈沉尘CSY2022
+				107238284, // 奇怪的小羊减少了
+				590569754, // 和你heni
+				592551597, // 东风Cherrier账号 邮箱:chengowen6@outlook.com -来源:用户简介
+				522669301, // xmwpumpkin528
+				3546675725470229, // 树眼镜蛇归来
+				3546655280335698, // 小小的口腔溃疡
+			]
+		},
+		{
+			displayName: "Roblox",
+			displayIcon: "https://i0.hdslb.com/bfs/face/916a16a2d69f25819adbb99946dea8d9dc6017e4.jpg@100w_100h.webp",
+			keywords: ["Roblox", "ROBLOX", "roblox", "Roblox代充", "ROBLOX代充", "roblox代充"],
+			followings: [
+				697014145, // ROBLOX中文社区
+				1318705997, // Roblox代充狼少
+				1871040990, // ROBLOX栖酸
+				3546609593878970, // 玩Roblox的小培根头呀
+				2100562436, // 萌游戏Roblox
+				24858417, // Roblox黑科技 WeChat:oxYLENxo QQ:390751814 -来源:用户简介
+				3493115440662822, // 一只爱玩roblox的noob
+				1113903222, // 太南游戏Roblox
+				1707425225, // Roblox_XiaoDi
+				1631113298, // 阿叶游戏Roblox
+			]
+		},
+		{
+			displayName: "火影忍者",
+			displayIcon: "https://i0.hdslb.com/bfs/face/3c975d44586143dd0eb4b121a3437bc8cc696610.jpg@100w_100h.webp",
+			keywords: ["互动抽奖 #火影忍者", "#火影忍者", "火影忍者"],
+			followings: [
+				441897078, // 火影忍者手游情报君
+				323357649, // 鬼渐van火影
+				43991083, // 暴躁老哥艾火影
+				172858724, // 火影手游晚安姐姐实况
+				396388451, // 火影忍者萝卜
+				320588834, // 火影忍者手游吴克玩家
+				516904626, // 火影隔壁村大聪明
+				259906339, // 火影手游静静NPL
+				8489468, // 火影手游灭霸
+				1808271299, // 旗木卡卡兮火影手游
+				559357874, // 火影手游fj
+				671089519, // 火影-村男与欧队长
+				2051066128, // 奇拉比-火影型男
+				404761044, // 火影手游G木生 QQ:3194987547
+				619039634, // 小七火影忍者
+			]
+		},
+		{
+			displayName: "暗区突围",
+			displayIcon: "https://i0.hdslb.com/bfs/face/9fb5b78af4a4345f650b783cf8a1b176d8389b8f.jpg@100w_100h.webp",
+			keywords: ["互动抽奖 #暗区突围", "#暗区突围", "暗区突围", "#一起上暗"],
+			followings: [
+				1915056903, // 暗区突围官方号的 UID
+				3546578394548722, // 《暗区突围：无限》端游官方号的 UID
+				3493093171006178, // 暗区突围赛事
+				1716115080, // 天霸暗区突围手游分部
+				675132117, // 小鲨鱼-暗区突围
+				471147874, // 暗区突围XJJ
+				443116092, // 暗区突围阿柒
+				2033313166, // 心叶-暗区突围
+				1214503199, // 刘杨杨暗区突围
+				86881329, // 梦求真暗区突围
+				195223983, // 阿帅暗区突围
+				627424061, // 暗区突围柒零 QQ群:513785932
+				1023776900, // 暗区突围一君
+				1611146372, // 老冯暗区突围
+				425037514, // 六子暗区突围
+				349964931, // 小余哥-暗区突围
+				3493294497597661, // 暗区突围欧大帅博奇王
+				3537109052819504, // 三石暗区突围
+				1463996771, // 暗区突围小舩子 QQ群:927133872
+				1150405278, // 暗区突围陌柒-世一粉
+			]
+		},
+		{
+			displayName: "香肠派对",
+			displayIcon: "https://i0.hdslb.com/bfs/face/ecfc11464941618978d464c5db795dfc9ac7d932.jpg@100w_100h.webp",
+			keywords: ["香肠派对"],
+			followings: [
+				285308635, // 香肠派对手游官方号的 UID
+				236615531, // 香肠派对屁屁王
+				1047655453, // 香肠派对梦柯
+				483407496, // 香肠派对流雲
+				1203401319, // 菲丽西香肠派对
+				1411805718, // 香肠派对晓冬吖
+				1650922953, // 香肠派对随缘
+				239687082, // 香肠派对空空
+				473502534, // 香肠派对卤本蛋
+				1387713046, // 香肠派对电竞
 			]
 		},
 		{
@@ -772,13 +1021,13 @@ $(function BiliChecker() {
 			keywords: ["穿越火线"],
 			followings: [
 				315554376, // 穿越火线官方号的 UID
-				204120111, // CF农哥吊打小怪兽
-				1083400219, // cf孙某
-				398597510, // CF教父
-				456180476, // CF猫七
 				33281681, // CF威廉I黑化版
+				204120111, // CF农哥吊打小怪兽
+				398597510, // CF教父
 				440017413, // 穿越火线兴兴
+				456180476, // CF猫七
 				474595618, // 穿越火线赛事
+				1083400219, // cf孙某
 			]
 		},
 		{
@@ -787,10 +1036,10 @@ $(function BiliChecker() {
 			keywords: ["地下城与勇士", "DNF"],
 			followings: [
 				102176172, // 地下城与勇士官方号的 UID
-				90179837, // dnf老搬
-				27253173, // DNF面码
-				8233456, // DNF枪魂冰子
 				332349, // DNF死兔子
+				8233456, // DNF枪魂冰子
+				27253173, // DNF面码
+				90179837, // dnf老搬
 				168090912, // 17173DNF官方
 				353944511, // DNF手游假猪
 			]
@@ -800,10 +1049,10 @@ $(function BiliChecker() {
 			displayIcon: "https://pubg.qq.com/favicon.ico",
 			keywords: ["绝地求生", "PUBG"],
 			followings: [
-				449704680, // 意识DT
 				6528910, // 小贝的游戏食堂
 				46708782, // 鲁大能
 				50329485, // 吃鸡赛事
+				449704680, // 意识DT
 				552064023, // 吃鸡小表弟
 			]
 		},
@@ -813,13 +1062,45 @@ $(function BiliChecker() {
 			keywords: ["英雄联盟", "LOL"],
 			followings: [
 				50329118, // 哔哩哔哩英雄联盟赛事官方号的 UID
-				4895244, // LOL丶诺诺
-				470840543, // LOL楠神李青
-				178778949, // 英雄联盟
 				50329220, // 哔哩哔哩LOL赛事直播
-				302651406, // WBG英雄联盟分部
-				652663378, // LOL小超梦
+				4895244, // LOL丶诺诺
 				23364027, // 英雄联盟-小白鸦
+				178778949, // 英雄联盟
+				302651406, // WBG英雄联盟分部
+				470840543, // LOL楠神李青
+				652663378, // LOL小超梦
+			]
+		},
+		{
+			displayName: "魔兽世界",
+			displayIcon: "https://i0.hdslb.com/bfs/game/6e3b53029663a11fc2e66ca1b3e523870177c6cc.jpg@100w_100h.webp",
+			keywords: ["魔兽世界", "魔兽", "艾泽拉斯"],
+		},
+		{
+			displayName: "CSGO",
+			displayIcon: "https://i0.hdslb.com/bfs/face/8119efd25d219ae7f192d51f5a3fc3ec45856375.jpg@100w_100h.webp",
+			keywords: ["CS2", "cs2", "CSGO", "csgo", "CS:GO", "cs:go", "反恐精英", "沙二", "沙2", "核子危机", "炙热沙城", "远古遗迹", "殒命大厦", "炼狱小镇", "死亡游乐园", "跳投", "s1mple", "major"],
+			followings: [
+				48455786, // CSGO国服官方号的 UID
+				474595627, // CSGO官方赛事
+				2183230, // 玩机器
+				9838560, // 菊咕咕
+				22192872, // igxe
+				25195727, // ququ
+				203680252, // aycs2
+				309491479, // 内格夫
+				317953117, // csgo-miku
+				373076765, // tyloo
+				381435385, // 茄子
+				384942089, // 德云两鬼
+				409588881, // csboy
+				437744340, // 王喜顺
+				472514992, // navi
+				480810988, // g2
+				512105432, // 玉麒麟
+				645647361, // BUFF
+				1497263761, // 哑巴老六
+				3494376720304904, // kennys
 			]
 		},
 		{
@@ -847,12 +1128,13 @@ $(function BiliChecker() {
 			keywords: ["格历奇GLITCH", "YouTube GLITCH", "GLITCH入驻b站", "无机杀手", "Murder Drones", "神奇数字马戏团", "The Amazing Digital Circus"],
 			followings: [
 				49442838, // 格历奇GLITCH官方号的 UID
+				1554039777, // 冒充GLITCH官方号的 UID
 			]
 		},
 		{
 			displayName: "彩虹六号：围攻",
 			displayIcon: "https://i0.hdslb.com/bfs/game/0f80bc73fc12a30c7f9c42f4e304a125f9aa1f10.jpg@100w_100h.webp",
-			keywords: ["彩虹6号：围攻", "彩虹六号", "彩六", "R6", "R6S", "Rainbow Six Siege"],
+			keywords: ["彩虹6号：围攻", "彩虹六号", "彩六", "R6S", "Rainbow Six Siege"],
 			followings: [
 				1661612, // Hex今天切墙了吗
 				1932102, // 溪木的龙裔
@@ -862,15 +1144,175 @@ $(function BiliChecker() {
 				98991109, // 角社区
 				115545042, // 梅西杰的西餐厅
 				140403337, // 塔塔kira
-				415890389 // 高板大芥末
+				415890389, // 高板大芥末
 			]
 		},
+		{
+			displayName: "小马宝莉",
+			displayIcon: "https://i0.hdslb.com/bfs/face/7a81dfd45db8333cbbce412b9a93d0f732261dd0.jpg@100w_100h.webp",
+			keywords: ["宝莉", "云宝", "碧琪", "萍琪", "暮光", "暮暮", "紫悦", "小蝶", "瑞瑞", "虹林檎", "序蝶", "粉毛组", "图书组"],
+			followings: [
+				5517794, // WonderLS
+				6881238, // PonyDaily
+				8346596, // 斯朗Shiron
+				12651008, // 虹云彼方
+				12719091, // 习成PBU
+				14824857, // 丢丢之王
+				16497847, // 小杯冠
+				18251508, // 千景
+				19443010, // CokeCoffee
+				21618817, // CNBC马展
+				22938997, // 霹雳神偷
+				23737695, // 不恰萝卜の兔子
+				27708737, // 雅欣妮砸
+				28344516, // 中二病大狮子
+				29254354, // Tridashie
+				32218088, // 紫鬃骊驹
+				37479021, // 小马宝莉点播厅
+				37719736, // 灵翼Lingyeee|CSBC马展
+				38818936, // 荆荆荆竹野
+				44134944, // 青焰小马
+				44162034, // 玛奇马骑马骑马
+				51688809, // Stellar-Windy
+				66970100, // LUMO_Xu
+				95119610, // 与君醉桃坞
+				118936756, // 心军RD
+				141792972, // 音灵灵
+				143348211, // 暮光闪闪_Twilight
+				159413920, // BronyTown
+				162857987, // 神通广大的超级闪闪
+				173407173, // Mushak植物
+				205022800, // 霜月月月月
+				291253032, // 魔熠小星星-c-
+				299313851, // 荧光_Fluorescence
+				306310521, // 幻歌精神状态良好
+				319298296, // 小马国男孩
+				340472568, // 马圈视野
+				346748701, // Twilight-Shimmer
+				352400157, // 叶翼叶芝
+				359143428, // 赤昧灯辉
+				381352558, // TTSS
+				381647702, // Coryzen
+				401633058, // 短笛横吹1231
+				403110171, // 红染之凌
+				409790680, // Talirian
+				429649720, // White_AL
+				442392499, // 友谊俱乐部starlight苍鱼
+				475290371, // Douershun
+				480137948, // Silvery_SKY
+				481261734, // 一只星月star
+				485600404, // 御坂美麒
+				496801702, // bf官方
+				525140745, // Uncle-Chai
+				529496831, // Unkinfo_
+				536402568, // 糖希酱
+				550924902, // 流光叆叇_ふきおくる
+				596133695, // 酒不可食用X
+				597085888, // Stellar_Dusk暮辰
+				606568713, // 费杰龙只会画画
+				641391025, // 凝霜cream
+				646801310, // cbf重庆马迷嘉年华
+				671656021, // 神七233
+				695521854, // 凝安---
+				1080164448, // LemonCola柠檬可乐
+				1100577818, // 苍筤feather
+				1117091922, // 神风小马同人绘画
+				1122442912, // Viento动画工作室
+				1160291544, // ShunHsi瞬息色彩
+				1235216769, // MLP-紫悦
+				1259597415, // 翠虹-nuyadable
+				1355029670, // zyh黑风
+				1436757844, // Lydia-Windy
+				1584226296, // _海盐気泡水_
+				1599773009, // 晴云字幕组
+				1625041793, // Eastquestria-东马厂牌
+				1630607440, // Fimtale官方
+				1676425649, // Starsky_Bearer
+				1694237999, // 画马丧志的屑彩梦
+				1774687156, // 呆呆猫
+				1999706609, // 羽落05
+				2052819254, // BladeFeather
+				3461563140802631, // hhzzy
+				3493080399349765, // 慕芯w
+				3493110080342763, // 彩霞闪闪_开学消失版
+				3493114880722969, // 泠老师的遗嘱
+				3493118047422505, // MLP-Twilight
+				3493135629945549, // KARINA_WHITE
+				3493293801343294, // 晶云QwQ
+				3494365531999068, // ry_Xplosion
+				3537122323597967, // 线牌洗衣机
+				3546388015089937, // 中央空调tear
+				3546559893473298, // 暗冥优莉
+				3546588335049207, // 星雪凌晶-Snowy_Twinkle
+				3546632490584150, // 涂山-秋卉
+			]
+		},
+		{
+			displayName: "孙笑川258",
+			displayIcon: "https://i0.hdslb.com/bfs/face/946857bdbbe15c419e24a60cda6ae96b2ae348ca.jpg@100w_100h.webp",
+			keywords: ["孙笑川", "笑川"],
+		},
+		{
+			displayName: "学生",
+			displayIcon: "学",
+			keywords: ["班级", "年级", "小学", "初中", "高中", "中考", "高考", "四六级", "学生党", "不放假", "防沉迷", "上学", "开学", "班里", "班委", "放寒假", "写作业", "学校的", "我们班", "我们老师", "我们学校"],
+		},
+		{
+			displayName: "互助",
+			displayIcon: "互",
+			keywords: ["互关", "互赞", "回赞", "回关", "不取关", "电磁力互助", "必回", "互相关注", "互相点赞"],
+		}
 	]
 
-	/*
-	防止代码因其他原因被执行多次
-	这段代码出自 Via轻插件，作者谷花泰
-	*/
+	/**
+	 * 对输入的UID数字进行排序，并保留注释。
+	 * 已暴露到脚本作用域的全局窗口，您可直接在浏览器控制台调用该函数。
+	 *
+	 * 运行：
+	   sort(`1661612, // Hex今天切墙了吗
+	   3227461, // 乔伊奥斯托雷
+	   115545042, // 梅西杰的西餐厅
+	   3933162,
+	   140403337, // 塔塔kira
+	   98991109, // 角社区
+	   17098554, // 豆豆最棒
+	   1932102,
+	   415890389 // 高板大芥末`)
+	 * 输出：
+	   1661612, // Hex今天切墙了吗
+	   1932102,
+	   3227461, // 乔伊奥斯托雷
+	   3933162,
+	   17098554, // 豆豆最棒
+	   98991109, // 角社区
+	   115545042, // 梅西杰的西餐厅
+	   140403337, // 塔塔kira
+	   415890389, // 高板大芥末
+	 *
+	 * @param {string} inputText - 输入包含数字和注释的文本。
+	 * @returns {string} - 排序后的文本，保留了注释。
+	 */
+	unsafeWindow.sort = function (inputText) {
+		const regex = /(\d+),?\s*(?:\/\/(.*))?/g;
+		let entries = [];
+		let match;
+		while ((match = regex.exec(inputText)) !== null) {
+			entries.push({
+				number: parseInt(match[1]),
+				comment: match[2] ? match[2].trim() : '' // 处理可能不存在的注释
+			});
+		}
+		entries.sort((a, b) => a.number - b.number);
+		let sortedText = entries.map(entry => entry.comment
+			? `${entry.number}, // ${entry.comment}`
+			: `${entry.number},`).join('\n');
+		console.log(sortedText)
+	}
+
+	/**
+	 * 防止代码因其他原因被执行多次
+	 * 这段代码出自 Via轻插件，作者谷花泰
+	 */
 	let key = encodeURIComponent('（改）B站成分检测器:主代码');
 	if (window[key]) return;
 	window[key] = true;
@@ -900,7 +1342,7 @@ $(function BiliChecker() {
 
 			let button = $(checkButton)
 			element.after(button)
-			button.on('click', function () {
+			button.one('click', function () {
 				checkComposition(element.attr("data-user-profile-id"), element, button.find(".composition-name-control"), element, '')
 			})
 			if (GM_getValue('Auto') === 'true') button.click()
@@ -917,7 +1359,7 @@ $(function BiliChecker() {
 
 			let button = $(checkButton)
 			element.after(button)
-			button.on('click', function () {
+			button.one('click', function () {
 				checkComposition(element.attr("data-user-profile-id"), element, button.find(".composition-name-control"), element, '')
 			})
 			if (GM_getValue('Auto') === 'true') button.click()
@@ -939,7 +1381,7 @@ $(function BiliChecker() {
 				element.parent().parent().parent().find(".composition-checkable, .composition-checked").remove()
 
 			button.css({ "margin": "8px 5px" });
-			button.on('click', function () {
+			button.one('click', function () {
 				checkComposition(element.parent().parent().find('a[href*="space.bilibili.com"]').attr('href').match(/space\.bilibili\.com\/(\d+)/)[1], element, button.find(".composition-name-control"), element.parent().parent(), { "margin": "0 0 10px" })
 			})
 			element.parent().parent().after(button);
@@ -957,7 +1399,7 @@ $(function BiliChecker() {
 							element.parent().parent().parent().find(".composition-checkable, .composition-checked").remove();
 
 						button.css({ "margin": "8px 5px" });
-						button.off('click').on('click', function () {
+						button.off('click').one('click', function () {
 							checkComposition(element.parent().parent().find('a[href*="space.bilibili.com"]').attr('href').match(/space\.bilibili\.com\/(\d+)/)[1], element, button.find(".composition-name-control"), element.parent().parent(), { "margin": "0 0 10px" });
 						});
 
@@ -984,7 +1426,7 @@ $(function BiliChecker() {
 		if (element && element.length > 0) {
 			let button = $(checkButton)
 			element.after(button)
-			button.on('click', function () {
+			button.one('click', function () {
 				checkComposition(element.attr("data-user-id"), element, button.find(".composition-name-control"), element, '')
 			})
 			if (GM_getValue('Auto') === 'true') button.click()
@@ -996,7 +1438,7 @@ $(function BiliChecker() {
 		if (element && element.length > 0) {
 			let button = $(checkButton)
 			element.after(button)
-			button.on('click', function () {
+			button.one('click', function () {
 				checkComposition(element.attr("data-user-id"), element, button.find(".composition-name-control"), element, '')
 			})
 			if (GM_getValue('Auto') === 'true') button.click()
@@ -1008,7 +1450,7 @@ $(function BiliChecker() {
 		if (element && element.length > 0) {
 			let button = $(checkButton)
 			element.after(button)
-			button.on('click', function () {
+			button.one('click', function () {
 				checkComposition(element.attr("data-user-id"), element, button.find(".composition-name-control"), element, '')
 			})
 			if (GM_getValue('Auto') === 'true') button.click()
@@ -1021,7 +1463,7 @@ $(function BiliChecker() {
 			let button = $(checkButton)
 			element.parent().parent().after(button);
 			button.css({ "margin": "8px 5px" });
-			button.on('click', function () {
+			button.one('click', function () {
 				checkComposition(element.parent().find('a[href*="space.bilibili.com"]').attr('href').match(/space\.bilibili\.com\/(\d+)/)[1], element, button.find(".composition-name-control"), element.parent().parent(), { "margin": "0 0 10px" })
 			})
 			if (GM_getValue('Auto') === 'true') button.click()
@@ -1039,7 +1481,7 @@ $(function BiliChecker() {
 
 			element.parent().parent().parent().after(button);
 			button.css({ "margin": "8px 5px" });
-			button.on('click', function () {
+			button.one('click', function () {
 				checkComposition(element.parent().find('a[href*="space.bilibili.com"]').attr('href').match(/space\.bilibili\.com\/(\d+)/)[1], element, button.find(".composition-name-control"), element.parent().parent().parent(), { "margin": "0 0 10px" })
 			})
 			if (GM_getValue('Auto') === 'true') button.click()
@@ -1055,7 +1497,7 @@ $(function BiliChecker() {
 					element.parent().parent().parent().parent().find(".composition-checkable, .composition-checked").remove()
 
 				button.css({ "margin": "8px 5px" });
-				button.off('click').on('click', function () {
+				button.off('click').one('click', function () {
 					checkComposition(element.parent().find('a[href*="space.bilibili.com"]').attr('href').match(/space\.bilibili\.com\/(\d+)/)[1], element, button.find(".composition-name-control"), element.parent().parent().parent(), { "margin": "0 0 10px" })
 				})
 
@@ -1070,7 +1512,7 @@ $(function BiliChecker() {
 		if (element && element.length > 0) {
 			let button = $(checkButton)
 			element.after(button)
-			button.on('click', function () {
+			button.one('click', function () {
 				checkComposition(element.attr("data-usercard-mid"), element, button.find(".composition-name-control"), element, '')
 			})
 			if (GM_getValue('Auto') === 'true') button.click()
@@ -1083,7 +1525,7 @@ $(function BiliChecker() {
 			let button = $(checkButton)
 			element.parent().parent().parent().find("div.btn-box").after(button);
 			button.css({ "margin": "8px 5px" });
-			button.on('click', function () {
+			button.one('click', function () {
 				checkComposition(element.parent().parent().parent().find("a.like").attr("mid"), element, button.find(".composition-name-control"), element.parent().parent().parent().find("div.btn-box"), { "margin": "0 0 10px" })
 			})
 			if (GM_getValue('Auto') === 'true') button.click()
@@ -1097,7 +1539,7 @@ $(function BiliChecker() {
 				let button = $(checkButton)
 				button.css({ "overflow": "hidden", "margin-bottom": "10px" });
 				element.parent().after(button)
-				button.on('click', function () {
+				button.one('click', function () {
 					checkComposition(element.parent().parent().find('a[href*="space.bilibili.com"]').attr('href').match(/space\.bilibili\.com\/(\d+)/)[1], element, button.find(".composition-name-control"), element.parent(), { "overflow": "hidden", "margin-bottom": "10px" })
 				})
 				if (GM_getValue('Auto') === 'true') button.click()
@@ -1110,7 +1552,7 @@ $(function BiliChecker() {
 		if (element && element.length > 0) {
 			let button = $(checkButton)
 			element.after(button)
-			button.on('click', function () {
+			button.one('click', function () {
 				checkComposition(element.attr("data-usercard-mid"), element, button.find(".composition-name-control"), element, '')
 			})
 			if (GM_getValue('Auto') === 'true') button.click()
@@ -1122,7 +1564,7 @@ $(function BiliChecker() {
 		if (element && element.length > 0) {
 			let button = $(checkButton)
 			element.after(button)
-			button.on('click', function () {
+			button.one('click', function () {
 				checkComposition(element.attr("data-usercard-mid"), element, button.find(".composition-name-control"), element, '')
 			})
 			if (GM_getValue('Auto') === 'true') button.click()
@@ -1132,11 +1574,12 @@ $(function BiliChecker() {
 	// 添加标签
 	function installComposition(rule, elemload, eleminst, elemcss) {
 		let badge = $(`<div class="composition-checked"><div class="composition-badge">
-			<a class="composition-name" title="点击查看已识别用户">${rule.displayName}</a>
+			<a class="composition-name"${GM_getValue('Lite') === 'true' ? ' style="padding-left:4px!important;"' : ""} title="${rule.displayName}，点击查看已识别用户">${GM_getValue('Lite') === 'true' ? "" : rule.displayName}</a>
 			${rule.displayIcon ? (
-				rule.displayIcon.match("https:") ? `<img referrer="no-referrer" referrerPolicy="no-referrer" src="${rule.displayIcon}" class="composition-icon">` :
-					rule.displayIcon.match("data:") ? `<img referrer="no-referrer" referrerPolicy="no-referrer" src="${rule.displayIcon}" class="composition-icon">` :
-						`<span class="composition-icon">${rule.displayIcon}</span>`
+				rule.displayIcon.match("https:") ? `<img referrer="no-referrer" referrerPolicy="no-referrer" title="${rule.displayName}，点击查看已识别用户" src="${rule.displayIcon}" class="composition-icon">` :
+					rule.displayIcon.match("http:") ? `<img referrer="no-referrer" referrerPolicy="no-referrer" title="${rule.displayName}，点击查看已识别用户" src="${rule.displayIcon}" class="composition-icon">` :
+						rule.displayIcon.match("data:") ? `<img title="${rule.displayName}，点击查看已识别用户" src="${rule.displayIcon}" class="composition-icon">` :
+							`<span class="composition-icon" title="${rule.displayName}，点击查看已识别用户">${rule.displayIcon}</span>`
 			) : ''}
 			</div></div>`)
 		badge.on('click', function () {
@@ -1165,6 +1608,7 @@ $(function BiliChecker() {
 				console.log(`【（改）B站成分检测器】缓存\n检测到 ${name} ${id} 的成分为\n`, JSON.parse(JSON.stringify(found.map(it => { return { name: it.displayName, reason: it.reason, item: it.item, keyword: it.keyword, uid: it.uid, full: it.full } }))))
 			} else {
 				console.log(`【（改）B站成分检测器】缓存\n检测到 ${name} ${id} 的成分为 无`)
+				elemload.parent().parent().attr('class', 'composition-checked');
 				elemload.text('无')
 				elemload.attr('title', '点击查看已查询过的用户')
 				elemload.on('click', function () {
@@ -1200,15 +1644,16 @@ $(function BiliChecker() {
 						}))
 						dom += `
 						<div style="margin-top: 25px">
-							<span style="margin:0">${name}</span>
-							<div id="tips" style="color: #fb7299;"><a href="https://space.bilibili.com/${id}/" target="_blank" style="color: #fb7299;">UID ${id}</a></div>
+							<div style="margin:0;font-size:large;">${name}</div>
+							<div id="tips" style="color: #fb7299;font-size:medium;"><a href="https://space.bilibili.com/${id}/" target="_blank" style="color: #fb7299;">UID ${id}</a></div>
 							`;
 						for (let i = 0; i < value.length; i++) {
 							let reason = value[i].keyword || value[i].uid
 							let icon = value[i].img ? (
 								value[i].img.match("https:") ? `<img referrer="no-referrer" referrerPolicy="no-referrer" src="${value[i].img}" class="composition-icon">` :
-									value[i].img.match("data:") ? `<img referrer="no-referrer" referrerPolicy="no-referrer" src="${value[i].img}" class="composition-icon">` :
-										`<span class="composition-icon">${value[i].img}</span>`
+									value[i].img.match("http:") ? `<img referrer="no-referrer" referrerPolicy="no-referrer" src="${value[i].img}" class="composition-icon">` :
+										value[i].img.match("data:") ? `<img src="${value[i].img}" class="composition-icon">` :
+											`<span class="composition-icon">${value[i].img}</span>`
 							) : ''
 							dom += `
 							<div style="margin-top: 10px;">
@@ -1241,6 +1686,7 @@ $(function BiliChecker() {
 									installComposition(rule, elements.elemload, elements.eleminst, elements.elemcss);
 								}
 							} else {
+								elements.elemload.parent().parent().attr('class', 'composition-checked');
 								elements.elemload.text('无');
 								elements.elemload.attr('title', '点击查看已查询过的用户');
 								elements.elemload.on('click', function () {
@@ -1250,6 +1696,7 @@ $(function BiliChecker() {
 						}
 					} else {
 						for (let elements of checking[id]) {
+							elements.elemload.parent().parent().attr('class', 'composition-checked');
 							elements.elemload.text('无');
 							elements.elemload.attr('title', '点击查看已查询过的用户');
 							elements.elemload.on('click', function () {
@@ -1265,7 +1712,7 @@ $(function BiliChecker() {
 					for (let elements of checking[id]) {
 						elements.elemload.text('重试')
 						elements.elemload.attr('title', '点击重新查询此用户成分')
-						elements.elemload.on('click', function () {
+						elements.elemload.one('click', function () {
 							checkComposition(id, elements.element, elements.elemload, elements.eleminst, elements.elemcss)
 						})
 					}
@@ -1273,10 +1720,10 @@ $(function BiliChecker() {
 				});
 		}
 	}
-	dom = `<div id="Identified">
+	dom = `<div>
 	<div id="tips">因判断关键词较为广泛，可能会出现误杀的现象</div>
 	<div id="tips">脚本还在测试阶段，喜欢的话还请留下你的评论</div>
-	<div id="tips">Ctrl+F 可以快速搜索</div>
+	<div id="tips">Ctrl+F 可以快速在本页中搜索内容</div>
 	${dom}</div>`;
 	function showAllUser() {
 		Swal.fire({
@@ -1295,6 +1742,30 @@ $(function BiliChecker() {
 	});
 	GM_registerMenuCommand("手动输入 ID 检查", () => {
 		uidChecker();
+	});
+
+	GM_registerMenuCommand("慢速点击已有按钮(少触发风控,不适用新版评论)", () => {
+		let timeout = 1500 + (Math.floor(Math.random() * 1000) + 1);
+		let count = 0;
+		$('.composition-checkable').each(function () {
+			let element = $(this);
+			count++;
+			setTimeout(function () {
+				element.click();
+			}, count * timeout);
+		});
+	});
+
+	GM_registerMenuCommand("快速点击已有按钮(易触发风控,不适用新版评论)", () => {
+		let timeout = 1000;
+		let count = 0;
+		$('.composition-checkable').each(function () {
+			let element = $(this);
+			count++;
+			setTimeout(function () {
+				element.click();
+			}, count * timeout);
+		});
 	});
 
 	function request(option) {
@@ -1343,8 +1814,8 @@ $(function BiliChecker() {
 			scrollbarPadding: false,
 			text: '请输入要查询的 UID 号码',
 			preConfirm: (uid) => {
-				return new Promise(async (resolve, reject) => {
-					// 检查用户卡片
+				return new Promise(async (resolve) => {
+					// 获取用户卡片
 					try {
 						if (!uid) throw new CodeError("请输入完整的用户 UID")
 						let cardRequest = await request({
@@ -1412,8 +1883,9 @@ $(function BiliChecker() {
 					let reason = value[i].keyword || value[i].uid
 					let icon = value[i].img ? (
 						value[i].img.match("https:") ? `<img referrer="no-referrer" referrerPolicy="no-referrer" src="${value[i].img}" class="composition-icon">` :
-							value[i].img.match("data:") ? `<img referrer="no-referrer" referrerPolicy="no-referrer" src="${value[i].img}" class="composition-icon">` :
-								`<span class="composition-icon">${value[i].img}</span>`
+							value[i].img.match("http:") ? `<img referrer="no-referrer" referrerPolicy="no-referrer" src="${value[i].img}" class="composition-icon">` :
+								value[i].img.match("data:") ? `<img src="${value[i].img}" class="composition-icon">` :
+									`<span class="composition-icon">${value[i].img}</span>`
 					) : ''
 					final += `
 					<div style="margin-top: 25px;">
@@ -1456,6 +1928,16 @@ $(function BiliChecker() {
 				})
 			}
 		})
+	}
+
+	if (GM_getValue('Lite') === 'true') {
+		GM_registerMenuCommand('隐藏用户成分名称(仅显示图片)：✅ 已启用', function () {
+			setting('Lite', '隐藏用户成分名称')
+		});
+	} else {
+		GM_registerMenuCommand('隐藏用户成分名称(仅显示图片)：❌ 已禁用', function () {
+			setting('Lite', '隐藏用户成分名称')
+		});
 	}
 
 	if (GM_getValue('Auto') === 'true') {
@@ -1598,7 +2080,6 @@ $(function BiliChecker() {
 			didOpen: (toast) => {
 				toast.addEventListener('mouseenter', Swal.stopTimer);
 				toast.addEventListener('mouseleave', Swal.resumeTimer);
-				// 如果需要刷新页面的标志存在，则添加点击事件
 
 			}
 		}).fire({ html: `<span>${text}</span>`, icon: type })
@@ -1650,6 +2131,8 @@ $(function BiliChecker() {
 			try {
 				// 存储检测结果的数组
 				let found = [];
+				// 存储错误的数组
+				let errors = [];
 
 				// 设定请求
 				let spaceRequest = request({
@@ -1661,7 +2144,7 @@ $(function BiliChecker() {
 				});
 
 				async function followingRequest() {
-					let page = 1, totalFollowings, fetchedFollowings = [], maxPages = 5, pageSize, totalPages;
+					let page = 1, totalFollowings, fetchedFollowings = [], maxPages = 2, pageSize, totalPages;
 					while (true) {
 						try {
 							let followingContent = await request({
@@ -1685,20 +2168,22 @@ $(function BiliChecker() {
 								if (page >= totalPages) break; // 达到最大页数时结束
 								page++; // 获取下一页
 							} else if (followingContent.code === 22115) {
-								console.warn(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的关注列表的第 ${page} 页失败，对方已关闭展示关注列表，错误码：${followingContent.code}`);
+								console.warn(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的关注列表失败，对方已关闭展示关注列表，错误码：${followingContent.code}`);
 								break;
 							} else if (followingContent.code === -352) {
 								console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的关注列表的第 ${page} 页失败，已触发哔哩哔哩风控，错误码：${followingContent.code}`);
+								errors.push(new CodeError(`获取关注列表的第 ${page} 页失败，已触发哔哩哔哩风控，错误码：${followingContent.code}`));
 								break;
 							} else {
 								if (fetchedFollowings.length > 0) {
 									if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的关注列表的第 ${page} 页失败，错误码：${followingContent.code}`);
 								} else {
-									throw new CodeError(`获取关注列表失败，错误码：${followingContent.code}`);
+									errors.push(new CodeError(`获取关注列表的第 ${page} 页失败，错误码：${followingContent.code}`));
 								}
 							}
 						} catch (error) {
-							throw new CodeError(error);
+							console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的关注列表的第 ${page} 页时发生错误`, error);
+							errors.push(error);
 						}
 					}
 					return fetchedFollowings;
@@ -1724,6 +2209,7 @@ $(function BiliChecker() {
 					}
 				} catch (error) {
 					if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 是否在命中名单失败`, error);
+					errors.push(error);
 				}
 
 				// 检查动态内容
@@ -1756,15 +2242,17 @@ $(function BiliChecker() {
 						}
 					} else if (spaceContent.code === -352) {
 						console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的空间动态失败，已触发哔哩哔哩风控，错误码：${spaceContent.code}`);
+						throw new CodeError(`获取空间动态失败，已触发哔哩哔哩风控，错误码：${spaceContent.code}`);
 					} else {
 						if (found.length > 0) {
 							if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的空间动态失败，错误码：${spaceContent.code}`);
 						} else {
-							reject(new CodeError(`获取空间动态失败，错误码：${spaceContent.code}`));
+							throw new CodeError(`获取空间动态失败，错误码：${spaceContent.code}`);
 						}
 					}
 				} catch (error) {
 					if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的空间动态失败`, error);
+					errors.push(error);
 				}
 
 				// 检查关注列表
@@ -1786,11 +2274,14 @@ $(function BiliChecker() {
 					}
 				} catch (error) {
 					if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的关注列表失败`, error);
+					errors.push(error);
 				}
 
 				// 返回检测结果
 				if (found.length > 0) {
 					console.log(`【（改）B站成分检测器】即时\n检测到 ${name} ${id} 的成分为\n`, JSON.parse(JSON.stringify(found.map(it => { return { name: it.displayName, reason: it.reason, item: it.item, keyword: it.keyword, uid: it.uid, full: it.full } }))))
+				} else if (errors.length > 0) {
+					throw new CodeError(errors)
 				}
 				resolve(found);
 			} catch (error) {
@@ -1800,6 +2291,20 @@ $(function BiliChecker() {
 		})
 	}
 
+	/*--- waitForKeyElements(): 一个实用函数，用于 Greasemonkey 脚本，
+	它可以检测和处理AJAX加载的内容。
+	此外，此函数还支持在使用 `shadowRoot` 的页面上运行。
+	使用示例：
+		base.waitForKeyElements (
+			"div.comments"
+			, commentCallbackFunction
+		);
+		// 页面特定的函数，用于在找到节点时执行我们想要的操作。
+		function commentCallbackFunction (jNode) {
+			jNode.text ("waitForKeyElements() 更改了这段注释。");
+		}
+	重要提示：这个函数需要你的脚本加载了jQuery。
+	*/
 	function waitForKeyElements(selectorTxt, actionFunction, bWaitOnce, iframeSelector) {
 		function findInShadowRoots(root, selector) {
 			let elements = $(root).find(selector).toArray();
