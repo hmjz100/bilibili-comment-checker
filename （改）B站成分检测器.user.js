@@ -189,6 +189,7 @@ $(function BiliChecker() {
 			displayIcon: "https://i0.hdslb.com/bfs/face/c5578966c447a70edf831bbf7e522b7be6090fea.jpg@100w_100h.webp",
 			keywords: ["我的世界", "minecraft", "#我的世界", "我的世界拜年祭", "MCBBS", "我的世界中文论坛", "MC玩家", "MC服务器"],
 			followings: [
+				9037593, //灰机咕咕
 				43310262, // 我的世界官方号的 UID
 				39914211, // 我的世界中文论坛(MCBBS)官方号的 UID
 				686127, // 籽岷
@@ -222,6 +223,9 @@ $(function BiliChecker() {
 				1377901474, // 东南大学Minecraft社
 				1670040346, // Minecraft-Curios
 				3546631009995059, // SquaredMedia官方频道
+				19525533, //KL_qiqi
+				44222886, //喜欢旅拍的阿玮
+				591074, //毫无人性的大麦纸
 			]
 		},
 		{
