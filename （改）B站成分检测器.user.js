@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name              （改）B站成分检测器
 // @version           2.0.1
-// @author            hmjz100,xulaupuz,trychen
+// @author            hmjz100,xulaupuz,trychen,kawakaze
 // @namespace         github.com/hmjz100
 // @license           GPLv3
 // @description       《也许同类型中最好用？》系列 - B站评论区自动标注成分，支持动态和关注识别以及手动输入 UID 识别，默认标注包括抽奖、原神、崩坏3、崩坏星穹铁道、绝区零、鸣潮、战双帕弥什、少女前线、少女前线2、明日方舟、碧蓝航线、碧蓝档案、尘白禁区、NIKKE胜利女神、VTuber、Asoul、王者荣耀、和平精英、三国杀、Minecraft、迷你世界、初生科技、Roblox、火影忍者、暗区突围、香肠派对、穿越火线、地下城与勇士、绝地求生、英雄联盟、魔兽世界、CSGO、第五人格、蛋仔派对、GLITCH、彩虹六号：围攻、小马宝莉、孙笑川258、学生、互助。
@@ -1261,6 +1261,20 @@ $(function BiliChecker() {
 			displayName: "互助",
 			displayIcon: "互",
 			keywords: ["互关", "互赞", "回赞", "回关", "不取关", "电磁力互助", "必回", "互相关注", "互相点赞"],
+		},
+		{
+			displayName: "无畏契约",
+			displayIcon: "https://i0.hdslb.com/bfs/face/fab938edd3ddc88be9d32aa34f32f9e11c2a9401.jpg@240w_240h_1c_1s_!web-avatar-space-header.avif",
+			keywords: ["无畏契约", "瓦罗兰特"],
+			followings: [
+				147546636, //无畏契约官方
+				2071691173, //无畏契约赛事
+				1004246390, //无畏契约电竞
+				3546375144867905, //TE溯无畏契约分部
+				17061834, //无畏契约皮肤
+				65427780, //无畏契约GAME社区
+				1716434113, //无畏契约资讯
+			]
 		}
 	]
 
