@@ -1265,7 +1265,7 @@ $(function BiliChecker() {
 		{
 			displayName: "无畏契约",
 			displayIcon: "https://i0.hdslb.com/bfs/face/fab938edd3ddc88be9d32aa34f32f9e11c2a9401.jpg@240w_240h_1c_1s_!web-avatar-space-header.avif",
-			keywords: ["无畏契约", "瓦罗兰特"],
+			keywords: ["无畏契约", "瓦罗兰特","VCTCN","VAL","VCT","valorant","VOLRANT"],
 			followings: [
 				147546636, //无畏契约官方
 				2071691173, //无畏契约赛事
