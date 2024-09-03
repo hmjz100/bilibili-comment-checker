@@ -2135,13 +2135,51 @@ $(function BiliChecker() {
 				let errors = [];
 
 				// 设定请求
-				let spaceRequest = request({
-					url: spaceApiUrl + id,
-					headers: {
-						"user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
-						"referer": "https://www.bilibili.com"
-					},
-				});
+				async function DynamicRequest() {
+					let offset = '', fetchedDynamics = [], currentPage = 1, maxPages = 2;
+
+					while (true) {
+						try {
+							// 发起请求
+							let spaceContent = await request({
+								url: `${spaceApiUrl}${id}&offset=${offset}`,
+								headers: {
+									"user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
+									"referer": "https://www.bilibili.com"
+								},
+							});
+
+							if (spaceContent.code === 0) {
+								let items = spaceContent.data.items;
+								fetchedDynamics = fetchedDynamics.concat(items);
+
+								offset = spaceContent.data.offset; // 更新offset
+
+								// 是否有更多内容或者已达到最大页数
+								if (!spaceContent.data.has_more || currentPage >= maxPages) {
+									break;
+								}
+
+								currentPage++; // 增加页数
+							} else if (spaceContent.code === -352) {
+								console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的空间动态失败，已触发哔哩哔哩风控，错误码：${spaceContent.code}`);
+								throw new CodeError(`获取空间动态失败，已触发哔哩哔哩风控，错误码：${spaceContent.code}`);
+							} else {
+								if (found.length > 0) {
+									if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的空间动态失败，错误码：${spaceContent.code}`);
+								} else {
+									throw new CodeError(`获取空间动态失败，错误码：${spaceContent.code}`);
+								}
+								break;
+							}
+						} catch (error) {
+							if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的空间动态失败`, error);
+							errors.push(error);
+							break;
+						}
+					}
+					return fetchedDynamics;
+				}
 
 				async function followingRequest() {
 					let page = 1, totalFollowings, fetchedFollowings = [], maxPages = 2, pageSize, totalPages;
@@ -2214,40 +2252,28 @@ $(function BiliChecker() {
 
 				// 检查动态内容
 				try {
-					let spaceContent = await spaceRequest;
-					if (spaceContent.code === 0) {
-						let items = spaceContent.data.items;
-						for (let rule of checkers) {
-							if (rule.keywords) {
-								for (let i = 0; i < items.length; i++) {
-									let itemContent = items[i]
-									let spacefull = items;
-									let content = itemContent.modules?.module_dynamic?.desc?.text
-									if (
-										spacefull && content &&
-										rule.keywords.find(keyword => JSON.stringify(spacefull).includes(keyword)) &&
-										rule.keywords.find(keyword => JSON.stringify(content).includes(keyword))
-									) {
-										found.push({
-											...rule,
-											full: items[i],
-											reason: `空间动态正文`,
-											item: content,
-											keyword: rule.keywords.find(keyword => JSON.stringify(content).includes(keyword))
-										});
-										if (single) break;
-									}
+					let items = await DynamicRequest()
+					for (let rule of checkers) {
+						if (rule.keywords) {
+							for (let i = 0; i < items.length; i++) {
+								let itemContent = items[i]
+								let spacefull = items;
+								let content = itemContent.modules?.module_dynamic?.desc?.text
+								if (
+									spacefull && content &&
+									rule.keywords.find(keyword => JSON.stringify(spacefull).includes(keyword)) &&
+									rule.keywords.find(keyword => JSON.stringify(content).includes(keyword))
+								) {
+									found.push({
+										...rule,
+										full: items[i],
+										reason: `空间动态正文`,
+										item: content,
+										keyword: rule.keywords.find(keyword => JSON.stringify(content).includes(keyword))
+									});
+									if (single) break;
 								}
 							}
-						}
-					} else if (spaceContent.code === -352) {
-						console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的空间动态失败，已触发哔哩哔哩风控，错误码：${spaceContent.code}`);
-						throw new CodeError(`获取空间动态失败，已触发哔哩哔哩风控，错误码：${spaceContent.code}`);
-					} else {
-						if (found.length > 0) {
-							if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的空间动态失败，错误码：${spaceContent.code}`);
-						} else {
-							throw new CodeError(`获取空间动态失败，错误码：${spaceContent.code}`);
 						}
 					}
 				} catch (error) {
