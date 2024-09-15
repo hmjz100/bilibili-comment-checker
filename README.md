@@ -24,3 +24,7 @@ Tips: 如需自查，请复制自己的UID号，打开脚本管理器菜单，�
 # 名词
 
 1. “出生科技”特指科技区的[小鬼](https://zh.moegirl.org.cn/%E5%B0%8F%E9%AC%BC)以及低质量内容。
+
+# 赞赏
+
+<img src="https://greasyfork.org/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTQ5Njk0LCJwdXIiOiJibG9iX2lkIn19--1e4816b53eee84fdaba7448a49298de518c30282/wechat.webp" alt="微信二维码" width="300px" height="300px">
