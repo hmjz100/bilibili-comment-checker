@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name              （改）B站成分检测器
-// @version           2.0.2
+// @version           2.0.3
 // @author            hmjz100,xulaupuz,trychen
 // @namespace         github.com/hmjz100
 // @license           GPLv3
-// @description       《也许同类型中最好用？》系列 - B站评论区自动标注成分，支持动态和关注识别以及手动输入 UID 识别，默认标注包括抽奖、原神、崩坏3、崩坏星穹铁道、绝区零、鸣潮、战双帕弥什、少女前线、少女前线2、明日方舟、碧蓝航线、蔚蓝档案、尘白禁区、NIKKE胜利女神、VTuber、Asoul、王者荣耀、和平精英、三国杀、Minecraft、迷你世界、初生科技、火柴人、Roblox、火影忍者、暗区突围、香肠派对、穿越火线、地下城与勇士、绝地求生、英雄联盟、魔兽世界、CSGO、第五人格、蛋仔派对、GLITCH、彩虹六号：围攻、无畏契约、战争雷霆、小马宝莉、孙笑川、电棍otto、学生、互助。
+// @description       《也许同类型中最好用？》系列 - B站评论区自动标注成分，支持动态和关注识别以及手动输入 UID 识别，默认标注包括抽奖、原神、崩坏3、崩坏星穹铁道、绝区零、明日方舟、碧蓝航线、蔚蓝档案、鸣潮、战双帕弥什、尘白禁区、少女前线、少女前线2、NIKKE胜利女神、VTuber、王者荣耀、和平精英、三国杀、Minecraft、迷你世界、初生科技、火柴人、Roblox、火影忍者、暗区突围、香肠派对、穿越火线、地下城与勇士、绝地求生、英雄联盟、魔兽世界、CSGO、第五人格、蛋仔派对、GLITCH、彩虹六号：围攻、无畏契约、战争雷霆、小马宝莉、孙笑川、电棍otto、学生、互助、伪成分。
 // @homepage          https://github.com/hmjz100/bilibili-comment-checker/
 // @supportURL        https://github.com/hmjz100/bilibili-comment-checker/issues
 // @match             *://*.bilibili.com/*
@@ -74,33 +74,6 @@
 			followings: [1636034895] // 绝区零官方号的 UID
 		},
 		{
-			displayName: "鸣潮",
-			displayIcon: "https://i0.hdslb.com/bfs/face/0abd6b9df304334a9388e968740b5b9b7d1a84be.jpg@100w_100h.webp",
-			keywords: ["互动抽奖 #鸣潮", "#鸣潮", "#鸣潮长离", "鸣潮"],
-			followings: [1955897084] // 鸣潮官方号的 UID
-		},
-		{
-			displayName: "战双帕弥什",
-			displayIcon: "https://i0.hdslb.com/bfs/face/29d40886bc649fd2b81793c17077728820d411b6.jpg@100w_100h.webp",
-			keywords: ["互动抽奖 #战双帕弥什", "#战双帕弥什", "#剪身成蝶", "战双帕弥什"],
-			followings: [382651856] // 战双帕弥什官方号的 UID
-		},
-		{
-			displayName: "少女前线",
-			displayIcon: "https://i0.hdslb.com/bfs/face/667e4b1ca39300bff0672774f1980c02c2353b11.jpg@100w_100h.webp",
-			keywords: ["互动抽奖 #少女前线", "#少女前线", "#零电荷", "少女前线"],
-			followings: [
-				32472953, // 少女前线官方号的 UID
-				266017919 // 少女前线后勤组的 UID
-			]
-		},
-		{
-			displayName: "少女前线2",
-			displayIcon: "https://i0.hdslb.com/bfs/face/427f8dde32e18465a723f7c7216340c2013d595d.jpg@100w_100h.webp",
-			keywords: ["互动抽奖 #少前2", "#少前2#", "少女前线2", "少前2"],
-			followings: [697654195] // 少女前线2官方号的 UID
-		},
-		{
 			displayName: "明日方舟",
 			displayIcon: "https://i0.hdslb.com/bfs/face/d4005a0f9b898d8bb049caf9c6355f8e8f772a8f.jpg@100w_100h.webp",
 			keywords: ["明日方舟", "#明日方舟"],
@@ -125,10 +98,37 @@
 			]
 		},
 		{
+			displayName: "鸣潮",
+			displayIcon: "https://i0.hdslb.com/bfs/face/0abd6b9df304334a9388e968740b5b9b7d1a84be.jpg@100w_100h.webp",
+			keywords: ["互动抽奖 #鸣潮", "#鸣潮", "#鸣潮长离", "鸣潮"],
+			followings: [1955897084] // 鸣潮官方号的 UID
+		},
+		{
+			displayName: "战双帕弥什",
+			displayIcon: "https://i0.hdslb.com/bfs/face/29d40886bc649fd2b81793c17077728820d411b6.jpg@100w_100h.webp",
+			keywords: ["互动抽奖 #战双帕弥什", "#战双帕弥什", "#剪身成蝶", "战双帕弥什"],
+			followings: [382651856] // 战双帕弥什官方号的 UID
+		},
+		{
 			displayName: "尘白禁区",
 			displayIcon: "https://i0.hdslb.com/bfs/face/e2a7e30399860cfa7c1ec5c958ab9e519290e181.jpg@100w_100h.webp",
 			keywords: ["尘白禁区", "#尘白禁区"],
 			followings: [1409863611] // 尘白禁区官方号的 UID
+		},
+		{
+			displayName: "少女前线",
+			displayIcon: "https://i0.hdslb.com/bfs/face/667e4b1ca39300bff0672774f1980c02c2353b11.jpg@100w_100h.webp",
+			keywords: ["互动抽奖 #少女前线", "#少女前线", "#零电荷", "少女前线"],
+			followings: [
+				32472953, // 少女前线官方号的 UID
+				266017919 // 少女前线后勤组的 UID
+			]
+		},
+		{
+			displayName: "少女前线2",
+			displayIcon: "https://i0.hdslb.com/bfs/face/427f8dde32e18465a723f7c7216340c2013d595d.jpg@100w_100h.webp",
+			keywords: ["互动抽奖 #少前2", "#少前2#", "少女前线2", "少前2"],
+			followings: [697654195] // 少女前线2官方号的 UID
 		},
 		{
 			displayName: "NIKKE胜利女神",
@@ -141,22 +141,9 @@
 			displayIcon: "https://i0.hdslb.com/bfs/face/d399d6f5cf7943a996ae96999ba3e6ae2a2988de.jpg@100w_100h.webp",
 			keywords: ["雪蓮", "塔菲", "七海", "草莓猫", "嘉然", "乃琳", "珈乐", "贝拉"],
 			followings: [
-				351609538, // 珈乐Carol
-				434334701, // 七海Nana7mi
-				672328094, // 嘉然今天吃什么
-				672342685, // 乃琳Queen
-				672346917, // 向晚大魔王
-				672353429, // 贝拉kira
-				1210816252, // 草莓猫Taffy
-				1265680561, // 永雏塔菲
 				1437582453, // 東雪蓮Official
-			]
-		},
-		{
-			displayName: "Asoul",
-			displayIcon: "https://i0.hdslb.com/bfs/face/43b21998da8e7e210340333f46d4e2ae7ec046eb.jpg@100w_100h.webp",
-			keywords: ["@A-SOUL_Official", "#A_SOUL#"],
-			followings: [
+				1265680561, // 永雏塔菲
+				1210816252, // 草莓猫Taffy
 				703007996, // Asoul
 				547510303, // Asoul二创计画
 				672328094, // 嘉然今天吃什么
@@ -164,6 +151,7 @@
 				351609538, // 珈乐Carol
 				672346917, // 向晚大魔王
 				672353429, // 贝拉kira
+				434334701, // 七海Nana7mi
 			]
 		},
 		{
@@ -1710,7 +1698,7 @@
 		},
 		{
 			displayName: "魔兽世界",
-			displayIcon: "https://i0.hdslb.com/bfs/game/6e3b53029663a11fc2e66ca1b3e523870177c6cc.jpg@100w_100h.webp",
+			displayIcon: "https://i0.hdslb.com/bfs/game/6e3b53029663a11fc2e66ca1b3e523870177c6cc.png@100w_100h.webp",
 			keywords: ["魔兽世界", "魔兽", "艾泽拉斯"],
 		},
 		{
@@ -1953,13 +1941,14 @@
 		},
 		{
 			displayName: "电棍otto",
-			displayIcon: "https://i0.hdslb.com/bfs/face/ecf4c55dad9446deed5cf67e5906f71fbbd6c032.jpg@100w_100h.webp",
-			keywords: ["电棍otto", "otto", "♿", "栗老师", "电棍笑传", "踩踩背", "ccb", "CCB"],
+			displayIcon: "♿",
+			keywords: ["电棍otto", "otto", "♿", "栗老师", "电棍笑传", "踩背", "踩踩背", "ccb", "CCB"],
 			followings: [
 				628845081, // 电棍otto
 				1071498861, // 栗老师动画教学
 				2103512502, // 文梧凤
 				494759113, // Dr-山雨欲来
+				1728547, // 泠风kaze
 			],
 		},
 		{
@@ -1971,6 +1960,14 @@
 			displayName: "互助",
 			displayIcon: "互",
 			keywords: ["互关", "互赞", "回赞", "回关", "不取关", "电磁力互助", "必回", "互相关注", "互相点赞"],
+		}
+	]
+
+	const checkerSpecial = [
+		{
+			displayName: "伪成分",
+			displayIcon: "😍",
+			reason: "这辈子有了",
 		}
 	]
 
@@ -2027,12 +2024,16 @@
 
 		console.log(sortedText);
 	}
+
 	unsafeWindow.getc = function () {
 		let text
-		checkers.forEach(item => {
+		for (let item of checkers) {
 			text = (text ? text : "") + item.displayName + "、"
-		})
-		console.log(text)
+		}
+		for (let item of checkerSpecial) {
+			text = (text ? text : "") + item.displayName + "、"
+		}
+		console.log(`【（改）B站成分检测器】即时\n${text.slice(0, -1)}`)
 	}
 
 	/**
@@ -2049,7 +2050,7 @@
 
 	// 空间动态api
 	const cardApiUrl = 'https://api.bilibili.com/x/web-interface/card?mid='
-	const spaceApiUrl = 'https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space?host_mid='
+	const dynamicApiUrl = 'https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space?host_mid='
 	const followingApiUrl = 'https://api.bilibili.com/x/relation/followings?vmid='
 
 	const searchIcon = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></path></svg>`
@@ -2198,7 +2199,7 @@
 
 			// jQuerty 不支持监听 shadowRoot DOM 元素变化，所以这里用原生 MutationObserver 来监听元素变化
 			const observer = new MutationObserver(mutations => {
-				mutations.forEach(mutation => {
+				for (let mutation of mutations) {
 					if (mutation.type === 'childList' || mutation.type === 'characterData') {
 						let button = $(checkButton)
 						let currentText = element.text().trim();
@@ -2231,7 +2232,7 @@
 							}, 2000)
 						})
 					}
-				});
+				};
 			});
 
 			// 配置观察器
@@ -2727,6 +2728,7 @@
 						});
 
 						// 给所有用到的地方添加标签
+						if (found.length > 0) found.reverse();
 						for (let elements of checking[id]) {
 							if (found.length > 0) {
 								for (let rule of found) {
@@ -2792,7 +2794,7 @@
 	});
 
 	GM_registerMenuCommand("慢速点击已有按钮(少触发风控,不适用新版评论)", () => {
-		let timeout = 1500 + (Math.floor(Math.random() * 1000) + 1);
+		let timeout = 2000 + (Math.floor(Math.random() * 2000) + 1);
 		let count = 0;
 		$('.composition-checkable').each(function () {
 			let element = $(this);
@@ -2880,6 +2882,7 @@
 							let card = cardContent.data.card
 							detectComposition(card.mid, card.name, true)
 								.then((found) => {
+									checked[card.mid] = found
 									let result = {
 										mid: card.mid,
 										name: card.name,
@@ -2941,8 +2944,9 @@
 							${icon}
 						</div>
 						<div style="margin-top: 12px;">
-							<div class="composition-name">原因：${value[i].reason}${typeof value[i].item === 'string' ? "（" + value[i].item + "）" : ""}</div>
+							<div class="composition-name">原因：${value[i].reason}</div>
 							<div class="composition-name">匹配：${reason}</div>
+							${typeof value[i].item === 'string' ? '<div class="composition-name">正文：' + value[i].item + '</div>' : ''}
 						</div>
 					</div>`;
 				}
@@ -3035,7 +3039,6 @@
 			[class^="composition-c"] {
 				display: inline-block !important;
 				cursor: pointer !important;
-				vertical-align: text-bottom;
 			}
 
 			.composition-name-control svg {
@@ -3084,7 +3087,7 @@
 				width: fit-content !important;
 				background: #00000008 !important;
 				border-radius: 10px !important;
-				margin: 0 0 0 8px !important;
+				margin: 0 0 0 6px !important;
 				font-family: PingFang SC, HarmonyOS_Regular, Helvetica Neue, Microsoft YaHei, sans-serif;
 			}
 
@@ -3204,57 +3207,103 @@
 				let errors = [];
 
 				// 设定请求
-				let spaceRequest = request({
-					url: spaceApiUrl + id,
-					headers: {
-						"user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
-						"referer": "https://www.bilibili.com"
-					},
-				});
-
 				async function followingRequest() {
-					let page = 1, totalFollowings, fetchedFollowings = [], maxPages = 2, pageSize, totalPages;
+					let currentPage = 1, maxPages = 2, pageSize, totalPages, totalFollowings, fetchedFollowings = [];
 					while (true) {
 						try {
+							console.log(`【（改）B站成分检测器】即时\n正在获取 ${name} ${id} 关注列表的第 ${currentPage} 页`);
+
+							// 发起请求
 							let followingContent = await request({
-								url: `${followingApiUrl}${id}&pn=${page}`,
+								url: `${followingApiUrl}${id}&pn=${currentPage}`,
 								headers: {
 									'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36',
 								},
 							});
+
 							if (followingContent.code === 0) {
 								let following = followingContent.data.list.map(it => it.mid);
 								fetchedFollowings = fetchedFollowings.concat(following);
 
-								if (page === 1) {
+								if (currentPage === 1) {
 									totalFollowings = followingContent.data.total; // 获取关注总数
 									if (totalFollowings === 0) break; // 啥都没关注时，直接结束
 									pageSize = followingContent.data.list.length; // 获取每页数量
 									totalPages = Math.min(Math.ceil(totalFollowings / pageSize), maxPages);// 先得到 大致页数 并与 最多可获取页数 对比然后取其中最小数
 									if (totalPages === 1) break; // 只有一页时，直接结束
 								}
-								if (page >= totalPages) break; // 达到最大页数时结束
-								page++; // 获取下一页
+								if (currentPage >= totalPages) break; // 达到最大页数时结束
+								currentPage++; // 获取下一页
 							} else if (followingContent.code === 22115) {
-								console.warn(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的关注列表失败，对方已关闭展示关注列表，错误码：${followingContent.code}`);
+								console.warn(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 关注列表失败，对方已关闭展示关注列表，错误码：${followingContent.code}`);
 								break;
 							} else if (followingContent.code === -352) {
-								console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的关注列表的第 ${page} 页失败，已触发哔哩哔哩风控，错误码：${followingContent.code}`);
-								errors.push(new CodeError(`获取关注列表的第 ${page} 页失败，已触发哔哩哔哩风控，错误码：${followingContent.code}`));
+								console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 关注列表的第 ${currentPage} 页失败，已触发哔哩哔哩风控，错误码：${followingContent.code}`);
+								errors.push(new CodeError(`获取关注列表的第 ${currentPage} 页失败，已触发哔哩哔哩风控，错误码：${followingContent.code}`));
 								break;
 							} else {
 								if (fetchedFollowings.length > 0) {
-									if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的关注列表的第 ${page} 页失败，错误码：${followingContent.code}`);
+									if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 关注列表的第 ${currentPage} 页失败，错误码：${followingContent.code}`);
 								} else {
-									errors.push(new CodeError(`获取关注列表的第 ${page} 页失败，错误码：${followingContent.code}`));
+									errors.push(new CodeError(`获取关注列表的第 ${currentPage} 页失败，错误码：${followingContent.code}`));
 								}
 							}
 						} catch (error) {
-							console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的关注列表的第 ${page} 页时发生错误`, error);
+							console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 关注列表的第 ${currentPage} 页时发生错误`, error);
 							errors.push(error);
 						}
 					}
 					return fetchedFollowings;
+				}
+
+				// 设定请求
+				async function dynamicRequest() {
+					let currentPage = 1, maxPages = 2, offset, fetchedDynamics = [];
+					while (true) {
+						try {
+							console.log(`【（改）B站成分检测器】即时\n正在获取 ${name} ${id} 空间动态的第 ${currentPage} 页`);
+
+							// 发起请求
+							let dynamicContent = await request({
+								url: `${dynamicApiUrl}${id}${offset ? ('&offset=' + offset) : ""}`,
+								headers: {
+									"user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
+									"referer": "https://www.bilibili.com"
+								},
+							});
+							console.log(dynamicContent)
+
+
+							if (dynamicContent.code === 0) {
+								let items = dynamicContent.data.items;
+								fetchedDynamics = fetchedDynamics.concat(items);
+
+								offset = dynamicContent.data.offset; // 更新下一页的 offset
+
+								// 是否有更多内容或者已达到最大页数
+								if (!dynamicContent.data.has_more || currentPage >= maxPages) {
+									break;
+								}
+
+								currentPage++; // 获取下一页
+							} else if (dynamicContent.code === -352) {
+								console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 空间动态的第 ${currentPage} 页失败，已触发哔哩哔哩风控，错误码：${dynamicContent.code}`);
+								throw new CodeError(`获取空间动态的第 ${currentPage} 页失败，已触发哔哩哔哩风控，错误码：${dynamicContent.code}`);
+							} else {
+								if (found.length > 0) {
+									if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 空间动态的第 ${currentPage} 页失败，错误码：${dynamicContent.code}`);
+								} else {
+									throw new CodeError(`获取空间动态的第 ${currentPage} 页失败，错误码：${dynamicContent.code}`);
+								}
+								break;
+							}
+						} catch (error) {
+							if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 空间动态的第 ${currentPage} 页失败`, error);
+							errors.push(error);
+							break;
+						}
+					}
+					return fetchedDynamics;
 				}
 
 				console.log(`【（改）B站成分检测器】即时\n正在检查用户 ${name} ${id} 的成分...`);
@@ -3280,49 +3329,6 @@
 					errors.push(error);
 				}
 
-				// 检查动态内容
-				try {
-					let spaceContent = await spaceRequest;
-					if (spaceContent.code === 0) {
-						let items = spaceContent.data.items;
-						for (let rule of checkers) {
-							if (rule.keywords) {
-								for (let i = 0; i < items.length; i++) {
-									let itemContent = items[i]
-									let spacefull = items;
-									let content = itemContent.modules?.module_dynamic?.desc?.text
-									if (
-										spacefull && content &&
-										rule.keywords.find(keyword => JSON.stringify(spacefull).includes(keyword)) &&
-										rule.keywords.find(keyword => JSON.stringify(content).includes(keyword))
-									) {
-										found.push({
-											...rule,
-											full: items[i],
-											reason: `空间动态正文`,
-											item: content,
-											keyword: rule.keywords.find(keyword => JSON.stringify(content).includes(keyword))
-										});
-										if (single) break;
-									}
-								}
-							}
-						}
-					} else if (spaceContent.code === -352) {
-						console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的空间动态失败，已触发哔哩哔哩风控，错误码：${spaceContent.code}`);
-						throw new CodeError(`获取空间动态失败，已触发哔哩哔哩风控，错误码：${spaceContent.code}`);
-					} else {
-						if (found.length > 0) {
-							if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的空间动态失败，错误码：${spaceContent.code}`);
-						} else {
-							throw new CodeError(`获取空间动态失败，错误码：${spaceContent.code}`);
-						}
-					}
-				} catch (error) {
-					if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的空间动态失败`, error);
-					errors.push(error);
-				}
-
 				// 检查关注列表
 				try {
 					let following = await followingRequest()
@@ -3341,7 +3347,63 @@
 						}
 					}
 				} catch (error) {
-					if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 的关注列表失败`, error);
+					if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 关注列表失败`, error);
+					errors.push(error);
+				}
+
+				// 检查动态内容
+				try {
+					let dynamic = await dynamicRequest();
+					for (let i = 0; i < dynamic.length; i++) {
+						let full = dynamic[i];
+						let text = full.modules?.module_dynamic?.desc?.text;
+						let orig = full.orig?.modules?.module_dynamic?.desc?.text;
+
+						let matchCount = 0;
+						let matchedRule = null;
+						let matchedContent = null;
+						let matchedReason = '';
+
+						for (let rule of checkers) {
+							if (rule.keywords) {
+								// 检测正文
+								if (text && rule.keywords.find(keyword => text.includes(keyword))) {
+									matchCount++;
+									matchedRule = rule;
+									matchedContent = text;
+									matchedReason = `空间动态正文`;
+								}
+
+								// 检测转发
+								if (orig && rule.keywords.find(keyword => orig.includes(keyword))) {
+									matchCount++;
+									matchedRule = rule;
+									matchedContent = orig;
+									matchedReason = `空间动态转发`;
+								}
+
+								if (matchCount > 5) {
+									matchedRule = checkerSpecial[0];
+									matchedContent = text;
+									matchedReason = checkerSpecial[0].reason;
+									break;
+								}
+							}
+						}
+
+						if (matchCount && matchedRule) {
+							found.push({
+								...matchedRule,
+								full: full,
+								reason: matchedReason,
+								item: matchedContent,
+								keyword: matchedRule.keywords ? matchedRule.keywords.find(keyword => matchedContent.includes(keyword)) : "无"
+							});
+							if (single) break;
+						}
+					}
+				} catch (error) {
+					if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 空间动态失败`, error);
 					errors.push(error);
 				}
 
@@ -3392,7 +3454,7 @@
 		}
 		let allElements = findInShadowRoots(targetElements, selectorTxt);
 		if (allElements.length > 0) {
-			allElements.forEach(function (element) {
+			for (let element of allElements) {
 				var jThis = $(element);
 				var alreadyFound = jThis.data('alreadyFound') || false;
 				if (!alreadyFound) {
@@ -3403,7 +3465,7 @@
 						jThis.data('alreadyFound', true);
 					}
 				}
-			});
+			};
 		}
 		var controlObj = waitForKeyElements.controlObj || {};
 		var controlKey = selectorTxt.replace(/[^\w]/g, "_");
@@ -3415,7 +3477,7 @@
 			if (!timeControl) {
 				timeControl = setInterval(function () {
 					waitForKeyElements(selectorTxt, actionFunction, bWaitOnce, iframeSelector);
-				}, 50);
+				}, 500);
 				controlObj[controlKey] = timeControl;
 			}
 		}
