@@ -2,7 +2,7 @@
 
 基于[B站成分检测器](https://greasyfork.org/zh-CN/scripts/451164)修改，原作者：[trychen](https://greasyfork.org/zh-CN/users/323392-trychen)
 
-已支持新版评论添加检查按钮~ 已尝试支持显示伪成分用户~
+已支持新版评论添加检查按钮~
 
 # 简介
 
