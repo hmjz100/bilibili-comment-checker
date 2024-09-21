@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name              （改）B站成分检测器
-// @version           2.0.3
+// @version           2.0.4
 // @author            hmjz100,xulaupuz,trychen
 // @namespace         github.com/hmjz100
 // @license           GPLv3
-// @description       《也许同类型中最好用？》系列 - B站评论区自动标注成分，支持动态和关注识别以及手动输入 UID 识别，默认标注包括抽奖、原神、崩坏3、崩坏星穹铁道、绝区零、明日方舟、碧蓝航线、蔚蓝档案、鸣潮、战双帕弥什、尘白禁区、少女前线、少女前线2、NIKKE胜利女神、VTuber、王者荣耀、和平精英、三国杀、Minecraft、迷你世界、初生科技、火柴人、Roblox、火影忍者、暗区突围、香肠派对、穿越火线、地下城与勇士、绝地求生、英雄联盟、魔兽世界、CSGO、第五人格、蛋仔派对、GLITCH、彩虹六号：围攻、无畏契约、战争雷霆、小马宝莉、孙笑川、电棍otto、学生、互助、伪成分。
+// @description       《也许同类型中最好用？》系列 - B站评论区自动标注成分，支持动态和关注识别以及手动输入 UID 识别，默认标注包括抽奖、原神、崩坏3、崩坏星穹铁道、绝区零、明日方舟、碧蓝航线、蔚蓝档案、鸣潮、战双帕弥什、尘白禁区、少女前线、少女前线2、NIKKE胜利女神、VTuber、王者荣耀、和平精英、三国杀、Minecraft、迷你世界、初生科技、火柴人、Roblox、火影忍者、暗区突围、香肠派对、穿越火线、地下城与勇士、绝地求生、英雄联盟、魔兽世界、CSGO、第五人格、蛋仔派对、GLITCH、彩虹六号：围攻、无畏契约、战争雷霆、小马宝莉、孙笑川、电棍otto、学生、互助。
 // @homepage          https://github.com/hmjz100/bilibili-comment-checker/
 // @supportURL        https://github.com/hmjz100/bilibili-comment-checker/issues
 // @match             *://*.bilibili.com/*
@@ -52,7 +52,7 @@
 		{
 			displayName: "原神",
 			displayIcon: "https://i0.hdslb.com/bfs/face/d2a95376140fb1e5efbcbed70ef62891a3e5284f.jpg@100w_100h.webp",
-			keywords: ["互动抽奖 #原神", "#原神", "原神", "芙宁娜", "白术", "赛诺", "神里绫人", "神里绫华", "夏洛蒂", "珊瑚宫", "九条裟罗", "班尼特", "夜阑", "那维莱特", "枫原万叶", "万叶", "钟离", "纳西妲", "香菱", "八重神子", "久岐忍", "菲谢尔", "艾尔海森", "胡桃", "林尼", "达达利亚", "提纳里", "宵宫", "莫娜", "甘雨", "罗莎莉亚", "刻晴", "九条裟罗", "温迪", "阿贝多", "云堇", "芭芭拉", "迪卢克", "烟绯", "重云", "雷泽", "凝光", "坎蒂丝", "辛焱"],
+			keywords: ["互动抽奖 #原神", "#原神", "原神", "芙宁娜", "白术", "赛诺", "神里绫人", "神里绫华", "夏洛蒂", "珊瑚宫", "九条裟罗", "班尼特", "夜阑", "那维莱特", "枫原万叶", "万叶", "钟离", "纳西妲", "香菱", "八重神子", "久岐忍", "菲谢尔", "艾尔海森", "林尼", "达达利亚", "提纳里", "宵宫", "莫娜", "甘雨", "罗莎莉亚", "刻晴", "九条裟罗", "温迪", "阿贝多", "云堇", "芭芭拉", "迪卢克", "烟绯", "重云", "雷泽", "凝光", "坎蒂丝", "辛焱"],
 			followings: [401742377] // 原神官方号的 UID
 		},
 		{
@@ -456,6 +456,7 @@
 				626857039, // 喜欢我民粹主义吗
 				627007091, // 你永远的二爷
 				627742070, // yz23333
+				629096557, // 阿柒漫
 				630547936, // 你的茶色
 				631731585, // system-bootmgr-L
 				631746555, // 卢本布奇诺
@@ -726,6 +727,7 @@
 				3493133344049877, // mc泰菲6
 				3493133778160480, // SYSTEM-WIN11-PE
 				3493140700859270, // 中文名亦好听
+				3493143079029172, // HCH233
 				3493146268797771, // 莪乃Vista叔
 				3493265716284014, // 一个新鲜的UP主
 				3493279186290766, // 6181jeve
@@ -979,6 +981,7 @@
 				626857039, // 喜欢我民粹主义吗
 				627007091, // 你永远的二爷
 				627742070, // yz23333
+				629096557, // 阿柒漫
 				630547936, // 你的茶色
 				631731585, // system-bootmgr-L
 				631746555, // 卢本布奇诺
@@ -1249,6 +1252,7 @@
 				3493133344049877, // mc泰菲6
 				3493133778160480, // SYSTEM-WIN11-PE
 				3493140700859270, // 中文名亦好听
+				3493143079029172, // HCH233
 				3493146268797771, // 莪乃Vista叔
 				3493265716284014, // 一个新鲜的UP主
 				3493279186290766, // 6181jeve
@@ -1963,14 +1967,6 @@
 		}
 	]
 
-	const checkerSpecial = [
-		{
-			displayName: "伪成分",
-			displayIcon: "😍",
-			reason: "这辈子有了",
-		}
-	]
-
 	/**
 	 * 对输入的UID数字进行排序，并保留注释。
 	 * 已暴露到脚本作用域的全局窗口，您可直接在浏览器控制台调用该函数。
@@ -2028,9 +2024,6 @@
 	unsafeWindow.getc = function () {
 		let text
 		for (let item of checkers) {
-			text = (text ? text : "") + item.displayName + "、"
-		}
-		for (let item of checkerSpecial) {
 			text = (text ? text : "") + item.displayName + "、"
 		}
 		console.log(`【（改）B站成分检测器】即时\n${text.slice(0, -1)}`)
@@ -3271,8 +3264,6 @@
 									"referer": "https://www.bilibili.com"
 								},
 							});
-							console.log(dynamicContent)
-
 
 							if (dynamicContent.code === 0) {
 								let items = dynamicContent.data.items;
@@ -3354,21 +3345,20 @@
 				// 检查动态内容
 				try {
 					let dynamic = await dynamicRequest();
-					for (let i = 0; i < dynamic.length; i++) {
-						let full = dynamic[i];
-						let text = full.modules?.module_dynamic?.desc?.text;
-						let orig = full.orig?.modules?.module_dynamic?.desc?.text;
+					for (let rule of checkers) {
+						if (rule.keywords) {
+							for (let i = 0; i < dynamic.length; i++) {
+								let item = dynamic[i]
+								let text = item.modules?.module_dynamic?.desc?.text;
+								let orig = item.orig?.modules?.module_dynamic?.desc?.text;
+								let origName = item.orig?.modules?.module_author?.name;
 
-						let matchCount = 0;
-						let matchedRule = null;
-						let matchedContent = null;
-						let matchedReason = '';
+								let matchedRule = null;
+								let matchedContent = null;
+								let matchedReason = '';
 
-						for (let rule of checkers) {
-							if (rule.keywords) {
 								// 检测正文
 								if (text && rule.keywords.find(keyword => text.includes(keyword))) {
-									matchCount++;
 									matchedRule = rule;
 									matchedContent = text;
 									matchedReason = `空间动态正文`;
@@ -3376,30 +3366,22 @@
 
 								// 检测转发
 								if (orig && rule.keywords.find(keyword => orig.includes(keyword))) {
-									matchCount++;
 									matchedRule = rule;
-									matchedContent = orig;
+									matchedContent = `${origName} - ${orig}`;
 									matchedReason = `空间动态转发`;
 								}
 
-								if (matchCount > 5) {
-									matchedRule = checkerSpecial[0];
-									matchedContent = text;
-									matchedReason = checkerSpecial[0].reason;
-									break;
+								if (matchedRule) {
+									found.push({
+										...matchedRule,
+										full: item,
+										reason: matchedReason,
+										item: matchedContent,
+										keyword: matchedRule.keywords ? matchedRule.keywords.find(keyword => matchedContent.includes(keyword)) : "无"
+									});
+									if (single) break;
 								}
 							}
-						}
-
-						if (matchCount && matchedRule) {
-							found.push({
-								...matchedRule,
-								full: full,
-								reason: matchedReason,
-								item: matchedContent,
-								keyword: matchedRule.keywords ? matchedRule.keywords.find(keyword => matchedContent.includes(keyword)) : "无"
-							});
-							if (single) break;
 						}
 					}
 				} catch (error) {
