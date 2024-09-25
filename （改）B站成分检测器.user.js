@@ -155,6 +155,14 @@
 			]
 		},
 		{
+			displayName: "Fate",
+			displayIcon: "https://i0.hdslb.com/bfs/face/464d57b188e80e96afb054005a311d243c827d59.jpg@100w_100h.webp",
+			keywords: ["命运-冠位指定","御主","从者","Fate","FGO"],
+			followings: [
+				233108841, // 命运-冠位指定官方号的 UID
+			]
+		},
+		{
 			displayName: "王者荣耀",
 			displayIcon: "https://i0.hdslb.com/bfs/face/effbafff589a27f02148d15bca7e97031a31d772.jpg@100w_100h.webp",
 			keywords: ["互动抽奖 #王者荣耀", "#王者荣耀", "王者荣耀"],
