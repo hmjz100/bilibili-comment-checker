@@ -171,6 +171,14 @@
 			]
 		},
 		{
+			displayName: "黑猴",
+			displayIcon: "https://i1.hdslb.com/bfs/face/5fdac7d9820175f5f0ae1b6c33968bb8f64cc82c.jpg@100w_100h.webp",
+			keywords: ["#六样情#","黑神话：悟空","黑神话悟空","黑悟空","黑吗喽"],
+			followings: [
+				642389251, // 黑神话悟空官方号的 UID
+			]
+		},
+		{
 			displayName: "王者荣耀",
 			displayIcon: "https://i0.hdslb.com/bfs/face/effbafff589a27f02148d15bca7e97031a31d772.jpg@100w_100h.webp",
 			keywords: ["互动抽奖 #王者荣耀", "#王者荣耀", "王者荣耀"],
