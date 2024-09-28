@@ -1,15 +1,16 @@
 // ==UserScript==
 // @name              （改）B站成分检测器
-// @version           2.0.5
+// @version           2.0.6
 // @author            hmjz100,xulaupuz,trychen
 // @namespace         github.com/hmjz100
 // @license           GPLv3
-// @description       《也许同类型中最好用？》系列 - B站评论区自动标注成分，支持动态和关注识别以及手动输入 UID 识别，默认标注包括 抽奖、原神、崩坏3、崩坏星穹铁道、绝区零、明日方舟、碧蓝航线、蔚蓝档案、鸣潮、战双帕弥什、尘白禁区、少女前线、少女前线2、NIKKE胜利女神、VTuber、王者荣耀、和平精英、三国杀、Minecraft、迷你世界、初生科技、火柴人、Roblox、火影忍者、暗区突围、香肠派对、穿越火线、地下城与勇士、绝地求生、英雄联盟、魔兽世界、CSGO、第五人格、蛋仔派对、GLITCH、彩虹六号：围攻、无畏契约、战争雷霆、Fate/Grand Order、女神异闻录: 夜幕魅影、黑神话: 悟空、小马宝莉、孙笑川、电棍otto、涩涩、这辈子有了、学生、互助、伪成分。
+// @description       《也许同类型中最好用？》系列 - B站评论区自动标注成分，支持动态和关注识别以及手动输入 UID 识别，默认标注包括 抽奖、原神、崩坏3、崩坏星穹铁道、绝区零、明日方舟、碧蓝航线、蔚蓝档案、鸣潮、战双帕弥什、尘白禁区、少女前线、少女前线2、NIKKE胜利女神、VTuber、王者荣耀、和平精英、三国杀、Minecraft、迷你世界、初生科技、火柴人、Roblox、火影忍者、暗区突围、香肠派对、穿越火线、地下城与勇士、绝地求生、英雄联盟、魔兽世界、CSGO、第五人格、蛋仔派对、GLITCH、彩虹六号：围攻、无畏契约、战争雷霆、Fate/Grand Order、女神异闻录: 夜幕魅影、黑神话: 悟空、小马宝莉、孙笑川、电棍otto、涩涩、这辈子有了、学生、互助、仙家军、伪成分。
 // @homepage          https://github.com/hmjz100/bilibili-comment-checker/
 // @supportURL        https://github.com/hmjz100/bilibili-comment-checker/issues
 // @match             *://*.bilibili.com/*
 // @icon              data:image/x-icon;base64,AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAABMLAAATCwAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A1qEAANahAADWoQAG1qEAb9ahAMvWoQD01qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD01qEAy9ahAG/WoQAG1qEAANahAADWoQAA1qEAG9ahAM/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahANDWoQAb1qEAANahAAfWoQDQ1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahANHWoQAH1qEAbtahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAG7WoQDH1qEA/9ahAP/WoQD/1qEAtdahABjWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahABvWoQC11qEA/9ahAP/WoQD/1qEAx9ahAPnWoQD/1qEA/9ahAP/WoQAZ1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahABjWoQD/1qEA/9ahAP/WoQDz1qEA/9ahAP/WoQD/1qEA/9ahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAErWoQDn1qEA5NahAErWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAErWoQDn1qEA5NahAErWoQAA1qEAANahAADWoQAA1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEA5tahAP/WoQD/1qEA59ahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEA5tahAP/WoQD/1qEA59ahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEA5tahAP/WoQD/1qEA5tahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEA5tahAP/WoQD/1qEA5tahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAADWoQAA1qEAANahAADWoQBJ1qEA5tahAObWoQBJ1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQBJ1qEA5tahAObWoQBJ1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEA+dahAP/WoQD/1qEA/9ahABnWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAGdahAP/WoQD/1qEA/9ahAPjWoQDH1qEA/9ahAP/WoQD/1qEAttahABnWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahABnWoQC21qEA/9ahAP/WoQD/1qEAx9ahAG3WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQBt1qEABtahAM/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA0NahAAfWoQAA1qEAG9ahAM/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAM/WoQAb1qEAANahAADWoQAA1qEABtahAG7WoQDH1qEA89ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA89ahAMfWoQBu1qEABtahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEADtahAMXWoQD/1qEA/9ahAP/WoQD/1qEAxdahAA/WoQAA1qEAANahAADWoQAA1qEADtahAMXWoQD/1qEA/9ahAP/WoQD/1qEAxdahAA/WoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAAbWoQDF1qEA/9ahAP/WoQD/1qEA/9ahAMXWoQAP1qEAANahAADWoQAA1qEAANahAADWoQAA1qEADtahAMXWoQD/1qEA/9ahAP/WoQD/1qEAxdahAAbWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAYtahAP/WoQD/1qEA/9ahAP/WoQDF1qEADtahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEADtahAMXWoQD/1qEA/9ahAP/WoQD/1qEAY9ahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQBf1qEA/9ahAP/WoQD/1qEAxdahAA7WoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEADtahAMXWoQD/1qEA/9ahAP/WoQBf1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAATWoQCg1qEA6tahAKjWoQAO1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEADtahAKjWoQDr1qEAoNahAATWoQAA1qEAANahAADWoQAA1qEAAP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A///////////AAAADgAAAAQAAAAAAAAAAA///wAf//+AP///wD///8A////AP///wDw/w8A8P8PAPD/DwDw/w8A8P8PAPD/DwD///8A////AH///gA///wAAAAAAAAAAAgAAAAcAAAAP8A8A/+AfgH/gP8B/4H/gf+D/8H/////8=
 // @connect           bilibili.com
+// @connect           gcore.jsdelivr.net
 // @grant             GM_setValue
 // @grant             GM_getValue
 // @grant             GM_xmlhttpRequest
@@ -27,7 +28,7 @@
 
 (function BiliChecker() {
 	/**
-	 * 是否在控制台显示总体的错误消息
+	 * 是否在控制台显示大多数错误消息
 	 */
 	let debug = false;
 	/**
@@ -40,7 +41,7 @@
 	 * 注释~
 	 * 在这里配置要检查的成分，或者直接拉黑（使用指定UID评论的人会被直接添加标签）。
 	 * 假设你要直接给指定UID添加一个标签的话，就这样写：blacklist: [1234567890,0987654321]
-	 * 成分列表后有一个 支持含注释快速排序UID 的函数，到了那里，您可以查看相关使用说明
+	 * 成分列表后有一个 支持含注释快速排序 UID 的函数，到了那里，您可以查看相关使用说明
 	 * 借此脚本守护我们最好的噼里啪啦捏~
 	 */
 	const checkers = [
@@ -322,6 +323,7 @@
 				356616083, // 第一位p站用户
 				356882513, // 被重组吃掉的虚拟桌面
 				357779530, // 空巢老KriaStans
+				359937651, // MicrosoftRTX2080 QQ群:550196805/699949890 -来源：用户简介
 				361858612, // 于小丘
 				362451533, // NC_Memz -> Aero123321
 				365129777, // DrAMA-MEMZ
@@ -848,6 +850,7 @@
 				356616083, // 第一位p站用户
 				356882513, // 被重组吃掉的虚拟桌面
 				357779530, // 空巢老KriaStans
+				359937651, // MicrosoftRTX2080 QQ群:550196805/699949890 -来源：用户简介
 				361858612, // 于小丘
 				362451533, // NC_Memz -> Aero123321
 				365129777, // DrAMA-MEMZ
@@ -1858,7 +1861,7 @@
 		{
 			displayName: "黑神话: 悟空",
 			displayIcon: "https://i0.hdslb.com/bfs/face/5fdac7d9820175f5f0ae1b6c33968bb8f64cc82c.jpg@100w_100h.webp",
-			keywords: ["#六样情#", "黑神话：悟空", "黑神话: 悟空", "黑神话:悟空", "黑神话·悟空", "黑神话悟空", "Black Myth: Wukong", "Black Myth:Wukong", "黑悟空", "黑吗喽"],
+			keywords: ["#六样情#", "黑神话：悟空", "黑神话: 悟空", "黑神话:悟空", "黑神话·悟空", "黑神话悟空", "Black Myth: Wukong", "Black Myth:Wukong", "黑悟空", "黑吗喽", "黑猴"],
 			followings: [
 				642389251, // 黑神话悟空官方号的 UID
 			]
@@ -1984,7 +1987,7 @@
 		{
 			displayName: "涩涩",
 			displayIcon: "😍",
-			keywords: ["R16", "R18", "16+"],
+			keywords: ["R16", "R18"],
 			followings: [
 				// 目前先收集这么多，如需完善数据可提 Pull Request 或者 Issues
 				3403527, // 蒋七七ChiChan
@@ -2024,6 +2027,21 @@
 			reason: "这辈子有了",
 		}
 	]
+
+	// 加入检测仙家军成分，目前仅支持黑名单和关注列表，数据来源：仙家军成分查询Helper
+	request({ url: "https://gcore.jsdelivr.net/gh/Darknights1750/XianLists@main/xianLists.json" })
+		.then(res => {
+			console.log(`【（改）B站成分检测器】即时\n仙家军列表加载完成\n`, res)
+			checkers.push({
+				displayName: "仙家军",
+				displayIcon: "仙",
+				blacklist: [...res.xianList, ...res.xianLv1List, ...res.xianLv2List, ...res.xianLv3List],
+				followings: [...res.xianList, ...res.xianLv1List, ...res.xianLv2List, ...res.xianLv3List]
+			});
+		})
+		.catch(error => {
+			console.error(`【（改）B站成分检测器】即时\n仙家军列表加载失败\n`, error);
+		});
 
 	/**
 	 * 对输入的UID数字进行排序，并保留注释。
@@ -3364,13 +3382,12 @@
 					for (let rule of checkers) {
 						if (rule.blacklist) {
 							for (let mid of rule.blacklist) {
-								if (id.includes(mid) && !found.includes(rule)) {
+								if (id === mid && !found.includes(rule)) {
 									found.push({
 										...rule,
 										reason: `黑名单`,
 										keyword: "uid" + mid
 									});
-									if (single) break;
 								}
 							}
 						}
@@ -3382,17 +3399,17 @@
 
 				// 检查关注列表
 				try {
-					let following = await followingRequest()
+					let following = await followingRequest();
 					for (let rule of checkers) {
 						if (rule.followings) {
 							for (let mid of rule.followings) {
-								if (following.includes(mid) && !found.includes(rule)) {
+								// 直接比较 mid 和 following 中的值
+								if (following.some(f => f === mid) && !found.includes(rule)) {
 									found.push({
 										...rule,
 										uid: "uid" + mid,
 										reason: `关注列表`
 									});
-									if (single) break;
 								}
 							}
 						}
@@ -3401,6 +3418,7 @@
 					if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 关注列表失败`, error);
 					errors.push(error);
 				}
+
 
 				// 检查动态内容
 				try {
@@ -3411,6 +3429,8 @@
 							for (let i = 0; i < dynamic.length; i++) {
 								let item = dynamic[i]
 								let text = item.modules?.module_dynamic?.desc?.text;
+								let videoTitle = item.modules?.module_dynamic?.major?.archive?.title;
+								let videoDesc = item.modules?.module_dynamic?.major?.archive?.desc;
 								let orig = item.orig?.modules?.module_dynamic?.desc?.text;
 								let origName = item.orig?.modules?.module_author?.name;
 
@@ -3432,6 +3452,20 @@
 									matchedReason = `空间动态转发`;
 								}
 
+								// 检测视频标题
+								if (videoTitle && rule.keywords.find(keyword => videoTitle.includes(keyword))) {
+									matchedRule = rule;
+									matchedContent = videoTitle;
+									matchedReason = `空间动态视频标题`;
+								}
+
+								// 检测视频简介
+								if (videoDesc && rule.keywords.find(keyword => videoDesc.includes(keyword))) {
+									matchedRule = rule;
+									matchedContent = videoDesc;
+									matchedReason = `空间动态视频简介`;
+								}
+
 								if (matchedRule) {
 									dynamicFound.push({
 										...matchedRule,
@@ -3440,7 +3474,6 @@
 										item: matchedContent,
 										keyword: matchedRule.keywords ? matchedRule.keywords.find(keyword => matchedContent.includes(keyword)) : "无"
 									});
-									if (single) break;
 								}
 							}
 						}
@@ -3477,6 +3510,11 @@
 				} else if (errors.length > 0) {
 					throw new CodeError(errors)
 				}
+				found.sort((a, b) => {
+					const indexA = checkers.findIndex(c => c.displayName === a.displayName);
+					const indexB = checkers.findIndex(c => c.displayName === b.displayName);
+					return indexA - indexB;
+				});
 				resolve(found);
 			} catch (error) {
 				if (debug) console.error(`【（改）B站成分检测器】即时\n检测 ${name} ${id} 的成分失败`, error);
@@ -3548,3 +3586,5 @@
 		waitForKeyElements.controlObj = controlObj;
 	}
 })()
+// 魔怔的环境迫使人变得魔怔[笑哭]
+// “可以举报插件让大家用不了，不过一个下架会马上有人开发出另一个”
