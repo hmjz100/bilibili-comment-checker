@@ -2012,6 +2012,7 @@
 			displayName: "学生",
 			displayIcon: "学",
 			keywords: ["班级", "年级", "同学", "小学", "初中", "高中", "中考", "高考", "四六级", "学生党", "不放假", "防沉迷", "上学", "开学", "班里", "班委", "放寒假", "写作业", "学校的", "我们班", "我们老师", "我们学校"],
+			reverse_keywords: ["上班","工作","领导","老板","工位","公司"]
 		},
 		{
 			displayName: "互助",
@@ -3437,8 +3438,11 @@
 								let matchedRule = null;
 								let matchedContent = null;
 								let matchedReason = '';
-
+								
 								// 检测正文
+								if (rule.reverse_keywords && rule.reverse_keywords.find(keyword => text.includes(keyword))){
+									continue;
+								}
 								if (text && rule.keywords.find(keyword => text.includes(keyword))) {
 									matchedRule = rule;
 									matchedContent = text;
@@ -3446,6 +3450,9 @@
 								}
 
 								// 检测转发
+								if (rule.reverse_keywords && rule.reverse_keywords.find(keyword => orig.includes(keyword))){
+									continue;
+								}
 								if (orig && rule.keywords.find(keyword => orig.includes(keyword))) {
 									matchedRule = rule;
 									matchedContent = `${origName} - ${orig}`;
@@ -3453,6 +3460,9 @@
 								}
 
 								// 检测视频标题
+								if (rule.reverse_keywords && rule.reverse_keywords.find(keyword => videoTitle.includes(keyword))){
+									continue;
+								}
 								if (videoTitle && rule.keywords.find(keyword => videoTitle.includes(keyword))) {
 									matchedRule = rule;
 									matchedContent = videoTitle;
@@ -3460,6 +3470,9 @@
 								}
 
 								// 检测视频简介
+								if (rule.reverse_keywords && rule.reverse_keywords.find(keyword => videoDesc.includes(keyword))){
+									continue;
+								}
 								if (videoDesc && rule.keywords.find(keyword => videoDesc.includes(keyword))) {
 									matchedRule = rule;
 									matchedContent = videoDesc;
