@@ -2017,7 +2017,26 @@
 			displayName: "互助",
 			displayIcon: "互",
 			keywords: ["互关", "互赞", "回赞", "回关", "不取关", "电磁力互助", "必回", "互相关注", "互相点赞"],
-		}
+		},
+		{
+			displayName: "MyGO/AveMujica",
+			displayIcon: "https://i2.hdslb.com/bfs/face/5f70adc443b0739c237847ef29acaea07a13db71.jpg@100w_100h.webp",
+			keywords: ["MyGo!!!!!", "MyGo", "mygo", "AveMujica", "Mujica", "avemujica", "mujica", "母鸡卡", "阿瓦母鸡卡", "高松灯", "千早爱音", "要乐奈", "长崎爽世", "长崎素世", "椎名立希", "丰川祥子", "若叶睦", "偷摸零", "阿侬酱", "长期素食", "三角初华", "八幡海铃", "祐天寺若麦" ],
+			followings: [
+				1459104794, //MyGO_AveMujica
+				304107221 //BanGDream_MyGO
+			],
+		},
+		{
+			displayName: "GBC",
+			displayIcon: "哭",
+			keywords: ["GirlsBandCry", "GIRLSBANDCRY", "girlsbandcry", "girls band cry", "Girls Band Cry", "GBC", "gbc", "哭泣少女乐队", "少女乐队哭", "井芹仁菜", "河原木桃香", "安和昴", "海老冢智", "RUPA", "有刺无刺"],
+		},
+		{
+			displayName: "孤独摇滚",
+			displayIcon: "孤",
+			keywords: ["孤独摇滚！", "BOCCHI THE ROCK!", "ぼっち・ざ・ろっく！", "后藤独", "伊地知虹夏", "山田凉", "喜多郁代", "纽带乐队", "结束乐队", "結束バンド", "波奇酱", "小孤独"],
+		},
 	]
 
 	const checkerSpecial = [
