@@ -2250,7 +2250,7 @@
 	]
 
 	// 加入检测仙家军成分，目前仅支持黑名单和关注列表，数据来源：仙家军成分查询Helper
-	request({ url: "https://gcore.jsdelivr.net/gh/Darknights1750/XianLists@main/xianLists.json" })
+	xmlhttpRequest({ url: "https://gcore.jsdelivr.net/gh/Darknights1750/XianLists@main/xianLists.json" })
 		.then(res => {
 			console.log(`【（改）B站成分检测器】即时\n仙家军列表加载完成\n`, res)
 			checkers.push({
@@ -3114,6 +3114,34 @@
 	});
 
 	function request(option) {
+		return new Promise((resolve, reject) => {
+			const { url, method = 'GET', headers = {}, body } = option;
+	
+			fetch(url, {
+				method,
+				headers,
+				body,
+				credentials: 'include',
+			})
+				.then(async (response) => {
+					if (!response.ok) {
+						reject(new Error(`HTTP error! Status: ${response.status}`));
+						return;
+					}
+					try {
+						const res = await response.json();
+						resolve(res);
+					} catch (err) {
+						reject(new Error('Failed to parse JSON response: ' + err.message));
+					}
+				})
+				.catch((error) => {
+					reject(error);
+				});
+		});
+	}
+
+	function xmlhttpRequest(option) {
 		return new Promise((resolve, reject) => {
 			let httpRequest = typeof GM_xmlhttpRequest !== "undefined" ? GM_xmlhttpRequest : GM.xmlHttpRequest;
 			httpRequest({
