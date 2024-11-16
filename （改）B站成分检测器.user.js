@@ -3117,7 +3117,7 @@
 		return new Promise((resolve, reject) => {
 			let httpRequest = typeof GM_xmlhttpRequest !== "undefined" ? GM_xmlhttpRequest : GM.xmlHttpRequest;
 			httpRequest({
-				method: 'get',
+				method: 'GET',
 				...option,
 				onload: (response) => {
 					let res = JSON.parse(response.responseText);
