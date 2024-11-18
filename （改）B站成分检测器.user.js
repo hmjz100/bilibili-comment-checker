@@ -1,15 +1,16 @@
 // ==UserScript==
 // @name              （改）B站成分检测器
-// @version           2.0.8
+// @version           3.0.0
 // @author            hmjz100,xulaupuz,trychen
 // @namespace         github.com/hmjz100
 // @license           GPLv3
-// @description       《也许同类型中最好用？》系列 - B站评论区自动标注成分，支持动态和关注识别以及手动输入 UID 识别，默认标注包括 抽奖、原神、崩坏3、崩坏星穹铁道、绝区零、明日方舟、碧蓝航线、蔚蓝档案、鸣潮、战双帕弥什、尘白禁区、少女前线、少女前线2、NIKKE胜利女神、VTuber、王者荣耀、和平精英、三国杀、Minecraft、迷你世界、初生科技、火柴人、Roblox、火影忍者、暗区突围、香肠派对、穿越火线、地下城与勇士、绝地求生、英雄联盟、魔兽世界、CSGO、第五人格、蛋仔派对、GLITCH、彩虹六号：围攻、无畏契约、战争雷霆、Fate/Grand Order、女神异闻录: 夜幕魅影、MyGO/AveMujica、GBC、孤独摇滚、黑神话: 悟空、小马宝莉、孙笑川、电棍otto、涩涩、这辈子有了、学生、互助、仙家军、伪成分。
+// @description       《也许同类型中最好用？》系列 - B站评论区自动标注成分，支持动态和关注识别以及手动输入 UID 识别，默认标注包括 抽奖、原神、崩坏3、崩坏星穹铁道、绝区零、明日方舟、碧蓝航线、蔚蓝档案、鸣潮、战双帕弥什、尘白禁区、少女前线、少女前线2、NIKKE胜利女神、VTuber、王者荣耀、和平精英、三国杀、Minecraft、迷你世界、初生科技、火柴人、Roblox、火影忍者、暗区突围、香肠派对、穿越火线、地下城与勇士、绝地求生、英雄联盟、魔兽世界、CSGO、第五人格、蛋仔派对、GLITCH、彩虹六号：围攻、无畏契约、战争雷霆、Fate/Grand Order、女神异闻录: 夜幕魅影、MyGO/AveMujica、GBC、孤独摇滚、小马宝莉、孙笑川、电棍otto、这辈子有了、学生、互助、仙家军、伪成分。
 // @homepage          https://github.com/hmjz100/bilibili-comment-checker/
 // @supportURL        https://github.com/hmjz100/bilibili-comment-checker/issues
 // @match             *://*.bilibili.com/*
 // @icon              data:image/x-icon;base64,AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAABMLAAATCwAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A1qEAANahAADWoQAG1qEAb9ahAMvWoQD01qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD01qEAy9ahAG/WoQAG1qEAANahAADWoQAA1qEAG9ahAM/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahANDWoQAb1qEAANahAAfWoQDQ1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahANHWoQAH1qEAbtahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAG7WoQDH1qEA/9ahAP/WoQD/1qEAtdahABjWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahABvWoQC11qEA/9ahAP/WoQD/1qEAx9ahAPnWoQD/1qEA/9ahAP/WoQAZ1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahABjWoQD/1qEA/9ahAP/WoQDz1qEA/9ahAP/WoQD/1qEA/9ahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAErWoQDn1qEA5NahAErWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAErWoQDn1qEA5NahAErWoQAA1qEAANahAADWoQAA1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEA5tahAP/WoQD/1qEA59ahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEA5tahAP/WoQD/1qEA59ahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEA5tahAP/WoQD/1qEA5tahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEA5tahAP/WoQD/1qEA5tahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAADWoQAA1qEAANahAADWoQBJ1qEA5tahAObWoQBJ1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQBJ1qEA5tahAObWoQBJ1qEAANahAADWoQAA1qEAANahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQD/1qEA/9ahAP/WoQD/1qEA+dahAP/WoQD/1qEA/9ahABnWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAGdahAP/WoQD/1qEA/9ahAPjWoQDH1qEA/9ahAP/WoQD/1qEAttahABnWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahABnWoQC21qEA/9ahAP/WoQD/1qEAx9ahAG3WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQBt1qEABtahAM/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA0NahAAfWoQAA1qEAG9ahAM/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAM/WoQAb1qEAANahAADWoQAA1qEABtahAG7WoQDH1qEA89ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA/9ahAP/WoQD/1qEA89ahAMfWoQBu1qEABtahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEADtahAMXWoQD/1qEA/9ahAP/WoQD/1qEAxdahAA/WoQAA1qEAANahAADWoQAA1qEADtahAMXWoQD/1qEA/9ahAP/WoQD/1qEAxdahAA/WoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAAbWoQDF1qEA/9ahAP/WoQD/1qEA/9ahAMXWoQAP1qEAANahAADWoQAA1qEAANahAADWoQAA1qEADtahAMXWoQD/1qEA/9ahAP/WoQD/1qEAxdahAAbWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAYtahAP/WoQD/1qEA/9ahAP/WoQDF1qEADtahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEADtahAMXWoQD/1qEA/9ahAP/WoQD/1qEAY9ahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQBf1qEA/9ahAP/WoQD/1qEAxdahAA7WoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEADtahAMXWoQD/1qEA/9ahAP/WoQBf1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAATWoQCg1qEA6tahAKjWoQAO1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEAANahAADWoQAA1qEADtahAKjWoQDr1qEAoNahAATWoQAA1qEAANahAADWoQAA1qEAAP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A///////////AAAADgAAAAQAAAAAAAAAAA///wAf//+AP///wD///8A////AP///wDw/w8A8P8PAPD/DwDw/w8A8P8PAPD/DwD///8A////AH///gA///wAAAAAAAAAAAgAAAAcAAAAP8A8A/+AfgH/gP8B/4H/gf+D/8H/////8=
 // @connect           bilibili.com
+// @connect           api.aicu.cc
 // @connect           gcore.jsdelivr.net
 // @grant             GM_setValue
 // @grant             GM_getValue
@@ -49,6 +50,7 @@
 			displayName: "抽奖",
 			displayIcon: "🎁",
 			keywords: ["互动抽奖", "转发本条动态"],
+			followings: [426971630]
 		},
 		{
 			displayName: "原神",
@@ -59,13 +61,13 @@
 		{
 			displayName: "崩坏3",
 			displayIcon: "https://i0.hdslb.com/bfs/face/f861b2ff49d2bb996ec5fd05ba7a1eeb320dbf7b.jpg@100w_100h.webp",
-			keywords: ["互动抽奖 #崩坏3", "#崩坏3", "崩坏3", "德丽莎", "温蒂"],
+			keywords: ["互动抽奖 #崩坏3", "#崩坏3", "崩坏3", "德丽莎"],
 			followings: [27534330] // 崩坏3官方号的 UID
 		},
 		{
 			displayName: "崩坏星穹铁道",
 			displayIcon: "https://i0.hdslb.com/bfs/face/57b6e8c16b909a49bfc8d8394d946f908cabe728.jpg@100w_100h.webp",
-			keywords: ["互动抽奖 #崩坏星穹铁道", "#崩坏星穹铁道", "#星穹铁道", "崩坏星穹铁道", "星铁", "崩铁"],
+			keywords: ["互动抽奖 #崩坏星穹铁道", "#崩坏星穹铁道", "#星穹铁道", "崩坏星穹铁道", "崩铁"],
 			followings: [1340190821] // 崩坏星穹铁道官方号的 UID
 		},
 		{
@@ -262,7 +264,7 @@
 			displayName: "初生科技",
 			displayIcon: "https://i0.hdslb.com/bfs/face/eb4c7bbea813eed3a92ee194809d85715e6a7659.jpg@100w_100h.webp",
 			// 正所谓：物以类聚，人以群分
-			keywords: ["作死拿班", "整蛊老师", "易语言", "编程猫", "scratch", "ramos", "winpe", "bsod", "memz", "MEMZ", "XP Horror", "XPHorror", "xp horror", "xphorror", "WindowsCE", "下崽器", "aero", "setup", "DWM", "CmzPrep", "VMWare", "希沃白板", "Ubuntu PE", "PowerShell", "gnu/linux", "SYSTEM", "vista", "VISTA", "电脑病毒", "Windows卸载", "Trustedlnstaller", "反微软"],
+			keywords: ["作死拿班", "整蛊老师", "易语言", "编程猫", "scratch", "ramos", "winpe", "bsod", "memz", "MEMZ", "XP Horror", "XPHorror", "xp horror", "xphorror", "WindowsCE", "下崽器", "aero", "setup", "DWM", "CmzPrep", "VMWare", "希沃白板", "Ubuntu PE", "PowerShell", "gnu/linux", "SYSTEM", "vista", "VISTA", "电脑病毒", "Windows卸载", "Trustedlnstaller", "反微软", "enderman", "Enderman"],
 			followings: [
 				417138, // 你的两位朋友
 				1585476, // 23胡彬MEMZ
@@ -327,6 +329,7 @@
 				353290736, // Win11的粉丝_offical
 				356616083, // 第一位p站用户
 				356882513, // 被重组吃掉的虚拟桌面
+				357106418, // 没什么好名字233333333
 				357779530, // 空巢老KriaStans
 				359937651, // MicrosoftRTX2080 QQ群:550196805/699949890 -来源：用户简介
 				360590692, // 鸭子_aayz
@@ -381,6 +384,7 @@
 				436415283, // 无惧死机
 				436837378, // 星雨在b站
 				440662801, // 爱玩电脑的特兰克斯
+				443646127, // ExplorerExec
 				443988102, // 何人哉er
 				448815938, // MisakaPothole
 				451475014, // STR-BSOD
@@ -414,7 +418,9 @@
 				503329203, // ゚゙゚゙゚薛禅汗
 				503884937, // KD_wen
 				504179884, // MYB_CKLS
+				504595366, // kv48
 				505199229, // SYSTEM_PHILI
+				505201154, // 萌新欻無
 				506031381, // 1665075
 				507578721, // 激鱼134_C4 网站:jiyu134.top QQ群:141198268 -来源:用户简介、动态
 				507581495, // 迷你世界哈毕夏公主
@@ -435,9 +441,10 @@
 				520758232, // NiHa0531
 				522317369, // Korzy
 				522669301, // xmwpumpkin528
-				524501321, // Start-hs888
+				524501321, // Start-hs888 QQ群:539032473 -来源:用户动态
 				524972094, // 毫无价值的人
 				525078314, // msstart
+				525488340, // und3f1n3d
 				525654062, // 我永远爱周防有希
 				526271721, // Pursn_延千
 				526816891, // OWOPROMAXPLUS
@@ -708,6 +715,7 @@
 				1933598970, // 白羊Linux
 				1935801783, // Windows软件倒腾师
 				1937436816, // 大好通
+				1945693481, // 孙子烧烤 QQ群:609642152 企业:东港市云港网络科技工作室 -来源:用户简介
 				1947070041, // 80691808980
 				1948479703, // SYSTEM-Image-WIM
 				1957089739, // 柴佳妮
@@ -723,7 +731,6 @@
 				1989712487, // SYSTEM-WIN11-KDE
 				1991535809, // TongTong1071
 				2004315025, // MrWEI95
-				2005074146, // 小熊猫Firedoge
 				2006378269, // 不__________
 				2008619333, // 哈利波特0909
 				2008726064, // kde-yyds
@@ -804,6 +811,7 @@
 				3493265716284014, // 一个新鲜的UP主
 				3493269004617827, // 王奕璋璋WIN-WYZ
 				3493275868596351, // 叫什么昵称好呢1024
+				3493277131082587, // BE-114514-やんで
 				3493279186290766, // 6181jeve
 				3493284609526085, // 点击修改合适昵称
 				3493286161418802, // 俏皮的方块鹦鹉
@@ -844,6 +852,8 @@
 				3546554428295778, // SYSTEM-WIN-DCR
 				3546556223457980, // bili_95794963688
 				3546558308026494, // 王启春国航737
+				3546558542908156, // 一架玩WOTB的A350XWB
+				3546559782324658, // 阿里小菜鸡一名
 				3546563917908620, // 鸡你大美美
 				3546565218142987, // 国航波音789
 				3546570507160068, // 233王者战士
@@ -854,6 +864,7 @@
 				3546587502479420, // Win12cmd
 				3546588681079261, // Windows7TOGO
 				3546589083732470, // 刘哥gametime做游戏
+				3546590776134512, // sanpai114514
 				3546591006820827, // 明月论坛
 				3546600454490707, // bili_20690504794
 				3546604573296995, // --张某人
@@ -874,6 +885,7 @@
 				3546675725470229, // 树眼镜蛇归来
 				3546677854079074, // 喜欢Windows的49
 				3546694952160136, // 暑假无敌123
+				3546698523609229, // 888讨厌Windows
 				3546712450795645, // 爱玩游戏的海猫儿
 				3546713621006982, // 桃酥油饼渣
 				3546717039364768, // SYSTEM-ZCQ
@@ -954,6 +966,7 @@
 				353290736, // Win11的粉丝_offical
 				356616083, // 第一位p站用户
 				356882513, // 被重组吃掉的虚拟桌面
+				357106418, // 没什么好名字233333333
 				357779530, // 空巢老KriaStans
 				359937651, // MicrosoftRTX2080 QQ群:550196805/699949890 -来源：用户简介
 				360590692, // 鸭子_aayz
@@ -1008,6 +1021,7 @@
 				436415283, // 无惧死机
 				436837378, // 星雨在b站
 				440662801, // 爱玩电脑的特兰克斯
+				443646127, // ExplorerExec
 				443988102, // 何人哉er
 				448815938, // MisakaPothole
 				451475014, // STR-BSOD
@@ -1041,7 +1055,9 @@
 				503329203, // ゚゙゚゙゚薛禅汗
 				503884937, // KD_wen
 				504179884, // MYB_CKLS
+				504595366, // kv48
 				505199229, // SYSTEM_PHILI
+				505201154, // 萌新欻無
 				506031381, // 1665075
 				507578721, // 激鱼134_C4 网站:jiyu134.top QQ群:141198268 -来源:用户简介、动态
 				507581495, // 迷你世界哈毕夏公主
@@ -1062,9 +1078,10 @@
 				520758232, // NiHa0531
 				522317369, // Korzy
 				522669301, // xmwpumpkin528
-				524501321, // Start-hs888
+				524501321, // Start-hs888 QQ群:539032473 -来源:用户动态
 				524972094, // 毫无价值的人
 				525078314, // msstart
+				525488340, // und3f1n3d
 				525654062, // 我永远爱周防有希
 				526271721, // Pursn_延千
 				526816891, // OWOPROMAXPLUS
@@ -1335,6 +1352,7 @@
 				1933598970, // 白羊Linux
 				1935801783, // Windows软件倒腾师
 				1937436816, // 大好通
+				1945693481, // 孙子烧烤 QQ群:609642152 企业:东港市云港网络科技工作室 -来源:用户简介
 				1947070041, // 80691808980
 				1948479703, // SYSTEM-Image-WIM
 				1957089739, // 柴佳妮
@@ -1350,7 +1368,6 @@
 				1989712487, // SYSTEM-WIN11-KDE
 				1991535809, // TongTong1071
 				2004315025, // MrWEI95
-				2005074146, // 小熊猫Firedoge
 				2006378269, // 不__________
 				2008619333, // 哈利波特0909
 				2008726064, // kde-yyds
@@ -1431,6 +1448,7 @@
 				3493265716284014, // 一个新鲜的UP主
 				3493269004617827, // 王奕璋璋WIN-WYZ
 				3493275868596351, // 叫什么昵称好呢1024
+				3493277131082587, // BE-114514-やんで
 				3493279186290766, // 6181jeve
 				3493284609526085, // 点击修改合适昵称
 				3493286161418802, // 俏皮的方块鹦鹉
@@ -1471,6 +1489,8 @@
 				3546554428295778, // SYSTEM-WIN-DCR
 				3546556223457980, // bili_95794963688
 				3546558308026494, // 王启春国航737
+				3546558542908156, // 一架玩WOTB的A350XWB
+				3546559782324658, // 阿里小菜鸡一名
 				3546563917908620, // 鸡你大美美
 				3546565218142987, // 国航波音789
 				3546570507160068, // 233王者战士
@@ -1481,6 +1501,7 @@
 				3546587502479420, // Win12cmd
 				3546588681079261, // Windows7TOGO
 				3546589083732470, // 刘哥gametime做游戏
+				3546590776134512, // sanpai114514
 				3546591006820827, // 明月论坛
 				3546600454490707, // bili_20690504794
 				3546604573296995, // --张某人
@@ -1501,6 +1522,7 @@
 				3546675725470229, // 树眼镜蛇归来
 				3546677854079074, // 喜欢Windows的49
 				3546694952160136, // 暑假无敌123
+				3546698523609229, // 888讨厌Windows
 				3546712450795645, // 爱玩游戏的海猫儿
 				3546713621006982, // 桃酥油饼渣
 				3546717039364768, // SYSTEM-ZCQ
@@ -1944,6 +1966,13 @@
 			followings: [
 				211005705, // 网易第五人格手游官方号的 UID
 				105022844, // 第五人格赛事
+				10409180, // Zyn战乙女
+				37066233, // 死神君姐姐
+				41853418, // 疯狂的杨大侠
+				100562870, // Berlin丶柏林林
+				211195541, // 栗子吃星星
+				355682928, // Timid丶怂韩
+				362123499, // WBG-杨某人
 				452627895, // 狼队电竞第五人格分部
 				1385707562, // TE溯第五人格分部
 			]
@@ -1963,6 +1992,7 @@
 			followings: [
 				49442838, // 格历奇GLITCH官方号的 UID
 				1554039777, // 冒充GLITCH官方号的 UID
+				17901616, // 配音员JOJO没有替身啊 -配音:凯恩
 			]
 		},
 		{
@@ -2076,14 +2106,6 @@
 			displayName: "孤独摇滚",
 			displayIcon: "孤",
 			keywords: ["孤独摇滚！", "BOCCHI THE ROCK!", "ぼっち・ざ・ろっく！", "后藤独", "伊地知虹夏", "山田凉", "喜多郁代", "纽带乐队", "结束乐队", "結束バンド", "波奇酱", "小孤独"],
-		},
-		{
-			displayName: "黑神话: 悟空",
-			displayIcon: "https://i0.hdslb.com/bfs/face/5fdac7d9820175f5f0ae1b6c33968bb8f64cc82c.jpg@100w_100h.webp",
-			keywords: ["#六样情#", "黑神话：悟空", "黑神话: 悟空", "黑神话:悟空", "黑神话·悟空", "黑神话悟空", "Black Myth: Wukong", "Black Myth:Wukong", "黑悟空", "黑吗喽", "黑猴"],
-			followings: [
-				642389251, // 黑神话悟空官方号的 UID
-			]
 		},
 		{
 			displayName: "小马宝莉",
@@ -2204,26 +2226,6 @@
 			],
 		},
 		{
-			displayName: "涩涩",
-			displayIcon: "😍",
-			keywords: ["R16", "R18"],
-			followings: [
-				// 目前先收集这么多，如需完善数据可提 Pull Request 或者 Issues
-				3403527, // 蒋七七ChiChan
-				10671099, // 蓝纹兔子
-				12506114, // 无所事事青叶酱
-				17328861, // 御坂猫猫neko
-				35347825, // 沉迷吃饭的萧雪
-				73491123, // 夜御寒
-				138789848, // 铃舟同学吖
-				191483432, // gbm白鲸
-				233227396, // 叫我长藤就好了
-				330657633, // 钉宫草莓
-				413417470, // 房房别闹
-				1306242888, // 次元与星空之缘
-			],
-		},
-		{
 			displayName: "这辈子有了",
 			displayIcon: "https://i0.hdslb.com/bfs/emote/63c9d1a31c0da745b61cdb35e0ecb28635675db2.png@100w_100h.webp",
 			keywords: ["这辈子有了"],
@@ -2245,7 +2247,7 @@
 		{
 			displayName: "伪成分",
 			displayIcon: "🤩",
-			reason: "这辈子有了",
+			reason: "在同一内容中重复检测到成分",
 		}
 	]
 
@@ -2341,11 +2343,7 @@
 	// 创建样式
 	addCheckerStyle(false);
 
-	// 空间动态api
-	const cardApiUrl = 'https://api.bilibili.com/x/web-interface/card?mid='
-	const dynamicApiUrl = 'https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space?host_mid='
-	const followingApiUrl = 'https://api.bilibili.com/x/relation/followings?vmid='
-
+	// 图标、声明
 	const searchIcon = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></path></svg>`
 	const checkButton = `<div class="composition-checkable"><div class="composition-badge-control"><span class="composition-name-control" title="点击查询用户成分">${searchIcon}</span></div></div>`
 	const copyIcon = `<svg width="12" height="12" viewBox="0 0 17 17" fill="none"><path d="M0 0H10V4H4V10H0V0Z" fill="currentColor"/><path d="M16 6H6V16H16V6Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></path></svg>`
@@ -2914,9 +2912,11 @@
 		}
 	})
 
+	let dn
+
 	// 添加标签
 	function installComposition(rule, elemload, eleminst, elemcss) {
-		let badge = $(`<div class="composition-checked" title="此图标为“${rule.displayName}”，点击查看已识别用户" ${GM_getValue('Lite') === 'true' ? 'style="margin:2px 0 2px 8px!important"' : ""}><div class="composition-badge">
+		let badge = $(`<div class="composition-checked" title="${!rule.sure ? '（此成分可能是误判，请注意判别）' : ""}此图标为“${rule.displayName}”，标记原因是${rule.reason}，点击查看已识别用户" style="${GM_getValue('Lite') === 'true' ? 'margin:2px 0 2px 8px!important;' : ""}${!rule.sure ? 'opacity:0.5!important' : ""}"><div class="composition-badge">
 			<span class="composition-name" ${GM_getValue('Lite') === 'true' ? 'style="padding:0px!important;"' : ""}>${GM_getValue('Lite') === 'true' ? "" : rule.displayName}</span>
 			${rule.displayIcon ? (
 				rule.displayIcon.match("https:") ? `<img referrer="no-referrer" referrerPolicy="no-referrer" src="${rule.displayIcon}" class="composition-icon" ${GM_getValue('Lite') === 'true' ? 'style="margin-right:-6px!important;"' : ""}>` :
@@ -2948,7 +2948,7 @@
 				for (let rule of found) {
 					installComposition(rule, elemload, eleminst, elemcss)
 				}
-				console.log(`【（改）B站成分检测器】缓存\n检测到 ${name} ${id} 的成分为\n`, found.map(it => ({ name: it.displayName, reason: it.reason, item: it.item, keyword: it.keyword, uid: it.uid, full: it.full })))
+				console.log(`【（改）B站成分检测器】缓存\n检测到 ${name} ${id} 的成分为\n`, found.map(it => ({ name: it.displayName, reason: it.reason, sure: it.sure, item: it.item, keyword: it.keyword, uid: it.uid, full: it.full })))
 			} else {
 				console.log(`【（改）B站成分检测器】缓存\n检测到 ${name} ${id} 的成分为 无`)
 				elemload.parent().parent().attr('class', 'composition-checked');
@@ -2980,6 +2980,7 @@
 							name: it.displayName,
 							img: it.displayIcon,
 							reason: it.reason,
+							sure: it.sure,
 							item: it.item,
 							keyword: it.keyword,
 							uid: it.uid,
@@ -3005,6 +3006,7 @@
 									${icon}
 								</div>
 								<div style="margin-top: 8px;">
+									${!value[i].sure ? '<div class="composition-name">此成分可能是误判，请注意判别</div>' : ''}
 									<div class="composition-name">原因：${value[i].reason}</div>
 									<div class="composition-name">匹配：${reason}</div>
 									${typeof value[i].item === 'string' ? '<div class="composition-name">内容：' + value[i].item + '</div>' : ''}
@@ -3120,7 +3122,12 @@
 				method: 'get',
 				...option,
 				onload: (response) => {
-					let res = JSON.parse(response.responseText);
+					let res
+					try {
+						res = JSON.parse(response.responseText);
+					} catch (e) {
+						res = response.response;
+					}
 					resolve(res);
 				},
 				onerror: (error) => {
@@ -3141,6 +3148,8 @@
 	}
 
 	function uidChecker() {
+		// 用户卡片Api
+		const cardApiUrl = 'https://api.bilibili.com/x/web-interface/card?mid='
 		Swal.fire({
 			title: '成分检测',
 			imageUrl: 'https://www.bilibili.com/favicon.ico',
@@ -3174,44 +3183,49 @@
 							},
 						});
 						let cardContent = cardRequest;
-						if (cardContent.code === 0) {
-							let card = cardContent.data.card
-							detectComposition(card.mid, card.name)
-								.then((found) => {
-									let result = {
-										mid: card.mid,
-										name: card.name,
-										level: card.level_info.current_level,
-										face: card.face,
-										sign: card.sign ? card.sign : '',
-										official_title: card.Official.title ? card.Official.title : '',
-										official_desc: card.Official.desc ? card.Official.desc : '',
-										official_role: card.Official.role !== 0 ? (
-											card.Official.role === 1 ? '个人认证 - 知名UP主' : card.Official.role === 2 ? '个人认证 - 大V达人' : card.Official.role === 3 ? '机构认证 - 企业' : card.Official.role === 4 ? '机构认证 - 组织' : card.Official.role === 5 ? '机构认证 - 媒体' : card.Official.role === 6 ? '机构认证 - 政府' : card.Official.role === 7 ? '个人认证 - 高能主播' : card.Official.role === 9 ? '个人认证 - 社会知名人士' : '未知认证角色(' + card.Official.role + ')'
-										) : '',
-										official_type: card.Official.type !== -1 ? (
-											card.Official.type === 0 ? 'UP主认证' : card.Official.type === 1 ? '机构认证' : '未知认证类型(' + card.Official.type + ')'
-										) : '',
-										vip: card.vip.vipType !== 0 ? (
-											card.vip.vipType === 1 ? '月度大会员' : card.vip.vipType === 2 ? '年度大会员(或以上)' : '未知会员(' + card.vip.vipType + ')'
-										) : '',
-										found: found.map(it => ({
-											name: it.displayName,
-											img: it.displayIcon,
-											reason: it.reason,
-											item: it.item,
-											keyword: it.keyword,
-											uid: it.uid,
-											full: it.full
-										}))
-									}
-									resolve(result)
-								})
-								.catch(error => {
-									throw error
-								})
+						if (cardContent && cardContent.code !== undefined) {
+							if (cardContent.code === 0) {
+								let card = cardContent.data.card
+								detectComposition(card.mid, card.name)
+									.then((found) => {
+										let result = {
+											mid: card.mid,
+											name: card.name,
+											level: card.level_info.current_level,
+											face: card.face,
+											sign: card.sign ? card.sign : '',
+											official_title: card.Official.title ? card.Official.title : '',
+											official_desc: card.Official.desc ? card.Official.desc : '',
+											official_role: card.Official.role !== 0 ? (
+												card.Official.role === 1 ? '个人认证 - 知名UP主' : card.Official.role === 2 ? '个人认证 - 大V达人' : card.Official.role === 3 ? '机构认证 - 企业' : card.Official.role === 4 ? '机构认证 - 组织' : card.Official.role === 5 ? '机构认证 - 媒体' : card.Official.role === 6 ? '机构认证 - 政府' : card.Official.role === 7 ? '个人认证 - 高能主播' : card.Official.role === 9 ? '个人认证 - 社会知名人士' : '未知认证角色(' + card.Official.role + ')'
+											) : '',
+											official_type: card.Official.type !== -1 ? (
+												card.Official.type === 0 ? 'UP主认证' : card.Official.type === 1 ? '机构认证' : '未知认证类型(' + card.Official.type + ')'
+											) : '',
+											vip: card.vip.vipType !== 0 ? (
+												card.vip.vipType === 1 ? '月度大会员' : card.vip.vipType === 2 ? '年度大会员(或以上)' : '未知会员(' + card.vip.vipType + ')'
+											) : '',
+											found: found.map(it => ({
+												name: it.displayName,
+												img: it.displayIcon,
+												reason: it.reason,
+												sure: it.sure,
+												item: it.item,
+												keyword: it.keyword,
+												uid: it.uid,
+												full: it.full
+											}))
+										}
+										resolve(result)
+									})
+									.catch(error => {
+										throw error
+									})
+							} else {
+								throw new CodeError(`获取用户信息失败，错误码：${cardContent.code}`)
+							}
 						} else {
-							throw new CodeError(`获取用户信息失败，错误码：${cardContent.code}`)
+							throw new CodeError(`获取用户信息失败`)
 						}
 					} catch (error) {
 						resolve(null);
@@ -3239,6 +3253,7 @@
 							${icon}
 						</div>
 						<div style="margin-top: 12px;">
+							${!value[i].sure ? '<div class="composition-name">此成分可能是误判，请注意判别</div>' : ''}
 							<div class="composition-name">原因：${value[i].reason}</div>
 							<div class="composition-name">匹配：${reason}</div>
 							${typeof value[i].item === 'string' ? '<div class="composition-name">内容：' + value[i].item + '</div>' : ''}
@@ -3274,6 +3289,16 @@
 				})
 			}
 		})
+	}
+
+	if (GM_getValue('Reply') === 'true') {
+		GM_registerMenuCommand('查询用户历史评论(AICU数据库)：✅ 已启用', function () {
+			setting('Reply', '查询用户历史评论')
+		});
+	} else {
+		GM_registerMenuCommand('查询用户历史评论(AICU数据库)：❌ 已禁用', function () {
+			setting('Reply', '查询用户历史评论')
+		});
 	}
 
 	if (GM_getValue('Lite') === 'true') {
@@ -3486,6 +3511,10 @@
 	function detectComposition(id, name) {
 		return new Promise(async (resolve, reject) => {
 			try {
+				// 空间动态Api
+				const dynamicApiUrl = 'https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space?host_mid='
+				const followingApiUrl = 'https://api.bilibili.com/x/relation/followings?vmid='
+				const replyApiUrl = 'https://api.aicu.cc/api/v3/search/getreply?uid='
 				// 存储检测结果的数组
 				let found = [];
 				// 存储错误的数组
@@ -3502,35 +3531,43 @@
 							let followingContent = await request({
 								url: `${followingApiUrl}${id}&pn=${currentPage}`,
 								headers: {
-									'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36',
+									'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36',
 								},
 							});
 
-							if (followingContent.code === 0) {
-								let following = followingContent.data.list.map(it => it.mid);
-								fetchedFollowings = fetchedFollowings.concat(following);
+							if (followingContent && followingContent.code !== undefined) {
+								if (followingContent.code === 0) {
+									let following = followingContent.data.list.map(it => it.mid);
+									fetchedFollowings = fetchedFollowings.concat(following);
 
-								if (currentPage === 1) {
-									totalFollowings = followingContent.data.total; // 获取关注总数
-									if (totalFollowings === 0) break; // 啥都没关注时，直接结束
-									pageSize = followingContent.data.list.length; // 获取每页数量
-									totalPages = Math.min(Math.ceil(totalFollowings / pageSize), maxPages);// 先得到 大致页数 并与 最多可获取页数 对比然后取其中最小数
-									if (totalPages === 1) break; // 只有一页时，直接结束
+									if (currentPage === 1) {
+										totalFollowings = followingContent.data.total; // 获取关注总数
+										if (totalFollowings === 0) break; // 啥都没关注时，直接结束
+										pageSize = followingContent.data.list.length; // 获取每页数量
+										totalPages = Math.min(Math.ceil(totalFollowings / pageSize), maxPages);// 先得到 大致页数 并与 最多可获取页数 对比然后取其中最小数
+										if (totalPages === 1) break; // 只有一页时，直接结束
+									}
+									if (currentPage >= totalPages) break; // 达到最大页数时结束
+									currentPage++; // 获取下一页
+								} else if (followingContent.code === 22115) {
+									console.warn(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 关注列表失败，对方已关闭展示关注列表，错误码：${followingContent.code}`);
+									break;
+								} else if (followingContent.code === -352) {
+									console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 关注列表的第 ${currentPage} 页失败，已触发哔哩哔哩风控，错误码：${followingContent.code}`);
+									errors.push(new CodeError(`获取关注列表的第 ${currentPage} 页失败，已触发哔哩哔哩风控，错误码：${followingContent.code}`));
+									break;
+								} else {
+									if (fetchedFollowings.length > 0) {
+										if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 关注列表的第 ${currentPage} 页失败，错误码：${followingContent.code}`);
+									} else {
+										errors.push(new CodeError(`获取关注列表的第 ${currentPage} 页失败，错误码：${followingContent.code}`));
+									}
 								}
-								if (currentPage >= totalPages) break; // 达到最大页数时结束
-								currentPage++; // 获取下一页
-							} else if (followingContent.code === 22115) {
-								console.warn(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 关注列表失败，对方已关闭展示关注列表，错误码：${followingContent.code}`);
-								break;
-							} else if (followingContent.code === -352) {
-								console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 关注列表的第 ${currentPage} 页失败，已触发哔哩哔哩风控，错误码：${followingContent.code}`);
-								errors.push(new CodeError(`获取关注列表的第 ${currentPage} 页失败，已触发哔哩哔哩风控，错误码：${followingContent.code}`));
-								break;
 							} else {
 								if (fetchedFollowings.length > 0) {
-									if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 关注列表的第 ${currentPage} 页失败，错误码：${followingContent.code}`);
+									if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 关注列表的第 ${currentPage} 页失败`);
 								} else {
-									errors.push(new CodeError(`获取关注列表的第 ${currentPage} 页失败，错误码：${followingContent.code}`));
+									errors.push(new CodeError(`获取关注列表的第 ${currentPage} 页失败`));
 								}
 							}
 						} catch (error) {
@@ -3557,26 +3594,34 @@
 								},
 							});
 
-							if (dynamicContent.code === 0) {
-								let items = dynamicContent.data.items;
-								fetchedDynamics = fetchedDynamics.concat(items);
+							if (dynamicContent && dynamicContent.code !== undefined) {
+								if (dynamicContent.code === 0) {
+									let items = dynamicContent.data.items;
+									fetchedDynamics = fetchedDynamics.concat(items);
 
-								offset = dynamicContent.data.offset; // 更新下一页的 offset
+									offset = dynamicContent.data.offset; // 更新下一页的 offset
 
-								// 是否有更多内容或者已达到最大页数
-								if (!dynamicContent.data.has_more || currentPage >= maxPages) {
-									break;
+									// 是否有更多内容或者已达到最大页数
+									if (!dynamicContent.data.has_more || currentPage >= maxPages) {
+										break;
+									}
+
+									currentPage++; // 获取下一页
+								} else if (dynamicContent.code === -352) {
+									console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 空间动态的第 ${currentPage} 页失败，已触发哔哩哔哩风控，错误码：${dynamicContent.code}`);
+									throw new CodeError(`获取空间动态的第 ${currentPage} 页失败，已触发哔哩哔哩风控，错误码：${dynamicContent.code}`);
+								} else {
+									if (found.length > 0) {
+										if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 空间动态的第 ${currentPage} 页失败，错误码：${dynamicContent.code}`);
+									} else {
+										throw new CodeError(`获取空间动态的第 ${currentPage} 页失败，错误码：${dynamicContent.code}`);
+									}
 								}
-
-								currentPage++; // 获取下一页
-							} else if (dynamicContent.code === -352) {
-								console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 空间动态的第 ${currentPage} 页失败，已触发哔哩哔哩风控，错误码：${dynamicContent.code}`);
-								throw new CodeError(`获取空间动态的第 ${currentPage} 页失败，已触发哔哩哔哩风控，错误码：${dynamicContent.code}`);
 							} else {
 								if (found.length > 0) {
-									if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 空间动态的第 ${currentPage} 页失败，错误码：${dynamicContent.code}`);
+									if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 空间动态的第 ${currentPage} 页失败`);
 								} else {
-									throw new CodeError(`获取空间动态的第 ${currentPage} 页失败，错误码：${dynamicContent.code}`);
+									throw new CodeError(`获取空间动态的第 ${currentPage} 页失败`);
 								}
 								break;
 							}
@@ -3589,7 +3634,59 @@
 					return fetchedDynamics;
 				}
 
+				async function replyRequest() {
+					let currentPage = 1, maxPages = 1, pageSize = 50, totalPages, totalReplys, fetchedReplys = [];
+					while (true) {
+						try {
+							console.log(`【（改）B站成分检测器】即时\n正在获取 ${name} ${id} 历史评论的第 ${currentPage} 页`);
+
+							// 发起请求
+							let replyContent = await request({
+								url: `${replyApiUrl}${id}&pn=${currentPage}&ps=${pageSize}&mode=0`,
+								headers: {
+									'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36',
+								},
+							});
+
+							if (replyContent && replyContent.code !== undefined) {
+								if (replyContent.code === 0) {
+									let items = replyContent.data.replies;
+									let cursor = replyContent.data.cursor;
+									fetchedReplys = fetchedReplys.concat(items);
+
+									if (currentPage === 1) {
+										totalReplys = cursor.all_count;
+										if (totalReplys === 0) break; // 啥都没评论时，直接结束
+										totalPages = Math.min(Math.ceil(totalReplys / pageSize), maxPages);// 先得到 大致页数 并与 最多可获取页数 对比然后取其中最小数
+										if (totalPages === 1 || cursor.is_end) break; // 只有一页或者达到最大页数时，直接结束
+									}
+									if (currentPage >= totalPages || cursor.is_end) break; // 达到最大页数时结束
+									currentPage++; // 获取下一页
+								} else {
+									if (fetchedReplys.length > 0) {
+										if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 历史评论的第 ${currentPage} 页失败，错误码：${replyContent.code}`);
+									} else {
+										errors.push(new CodeError(`获取历史评论的第 ${currentPage} 页失败，错误码：${replyContent.code}`));
+									}
+								}
+							} else {
+								if (fetchedReplys.length > 0) {
+									if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 历史评论的第 ${currentPage} 页失败`);
+								} else {
+									errors.push(new CodeError(`获取历史评论的第 ${currentPage} 页失败`));
+								}
+								break;
+							}
+						} catch (error) {
+							console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 历史评论的第 ${currentPage} 页时发生错误`, error);
+							errors.push(error);
+						}
+					}
+					return fetchedReplys;
+				}
+
 				console.log(`【（改）B站成分检测器】即时\n正在检查用户 ${name} ${id} 的成分...`);
+				if (dn) return resolve([]);
 
 				// 检查用户是否在黑名单中
 				try {
@@ -3601,6 +3698,7 @@
 									found.push({
 										...rule,
 										reason: `黑名单`,
+										sure: true,
 										keyword: "uid" + mid
 									});
 								}
@@ -3623,6 +3721,7 @@
 									found.push({
 										...rule,
 										uid: "uid" + mid,
+										sure: true,
 										reason: `关注列表`
 									});
 								}
@@ -3651,12 +3750,14 @@
 
 								let matchedRule = null;
 								let matchedContent = null;
+								let matchedSure = null;
 								let matchedReason = '';
 
 								// 检测内容
 								if (text && rule.keywords.find(keyword => text.includes(keyword))) {
 									matchedRule = rule;
 									matchedContent = text;
+									matchedSure = true;
 									matchedReason = `空间动态内容`;
 								}
 
@@ -3664,6 +3765,7 @@
 								if (orig && rule.keywords.find(keyword => orig.includes(keyword))) {
 									matchedRule = rule;
 									matchedContent = `${origName} - ${orig}`;
+									matchedSure = checkers[0].keywords ? (checkers[0].keywords.find(keyword => orig.includes(keyword))) : false;
 									matchedReason = `空间动态转发`;
 								}
 
@@ -3671,6 +3773,7 @@
 								if (videoTitle && rule.keywords.find(keyword => videoTitle.includes(keyword))) {
 									matchedRule = rule;
 									matchedContent = videoTitle;
+									matchedSure = true;
 									matchedReason = `空间动态视频标题`;
 								}
 
@@ -3678,6 +3781,7 @@
 								if (videoDesc && rule.keywords.find(keyword => videoDesc.includes(keyword))) {
 									matchedRule = rule;
 									matchedContent = videoDesc;
+									matchedSure = true;
 									matchedReason = `空间动态视频简介`;
 								}
 
@@ -3705,6 +3809,7 @@
 										...matchedRule,
 										full: item,
 										reason: matchedReason,
+										sure: matchedSure,
 										item: matchedContent,
 										keyword: matchedRule.keywords ? matchedRule.keywords.find(keyword => matchedContent.includes(keyword)) : "无"
 									});
@@ -3726,6 +3831,7 @@
 								...checkerSpecial[0],
 								full: found.full,
 								item: found.item,
+								sure: false,
 								keyword: `${found.displayName} - ${found.keyword}`
 							})
 						} else {
@@ -3738,6 +3844,55 @@
 					errors.push(error);
 				}
 
+				// 检查历史评论
+				if (GM_getValue('Reply') === 'true') try {
+					let reply = await replyRequest();
+					let replyFound = [];
+					for (let rule of checkers) {
+						if (rule.keywords) {
+							for (let i = 0; i < reply.length; i++) {
+								let item = reply[i]
+								let text = item.message;
+								let orig = item.dyn?.oid;
+								let root = item.parent?.rootid || item.rpid;
+
+								let matchedRule = null;
+								let matchedContent = null;
+								let matchedReason = '';
+
+								// 检测内容
+								if (text && rule.keywords.find(keyword => text.includes(keyword))) {
+									matchedRule = rule;
+									matchedContent = text;
+									matchedReason = `视频(av${orig})中的历史评论(id#${root})`;
+								}
+
+								if (rule.keywordsReverse) {
+									// 检测内容
+									if (text && rule.keywordsReverse.find(keyword => text.includes(keyword))) {
+										continue;
+									}
+								}
+
+								if (matchedRule) {
+									replyFound.push({
+										...matchedRule,
+										full: item,
+										reason: matchedReason,
+										sure: false,
+										item: matchedContent,
+										keyword: matchedRule.keywords ? matchedRule.keywords.find(keyword => matchedContent.includes(keyword)) : "无"
+									});
+								}
+							}
+						}
+					}
+					found.push(...replyFound);
+				} catch (error) {
+					if (debug) console.error(`【（改）B站成分检测器】即时\n获取 ${name} ${id} 历史评论失败`, error);
+					errors.push(error);
+				}
+
 				if (found.length > 0) {
 					// 先按原始排序（按照 checkers 列表来排序）
 					found.sort((a, b) => {
@@ -3746,14 +3901,19 @@
 						return indexA - indexB;
 					});
 
+					let notReply = found.filter(item => !item.reason.includes("评论"));
+					let isReply = found.filter(item => item.reason.includes("评论"));
+
 					// 再按出现次数排序（成分相关程度越高越靠前）
 					let nameCount = {};
-					found.forEach(item => {
+					notReply.forEach(item => {
 						nameCount[item.displayName] = (nameCount[item.displayName] || 0) + 1;
 					});
-					found.sort((a, b) => nameCount[b.displayName] - nameCount[a.displayName]);
+					notReply.sort((a, b) => nameCount[b.displayName] - nameCount[a.displayName]);
 
-					console.log(`【（改）B站成分检测器】即时\n检测到 ${name} ${id} 的成分为\n`, found.map(it => ({ name: it.displayName, reason: it.reason, item: it.item, keyword: it.keyword, uid: it.uid, full: it.full })))
+					found = [...notReply, ...isReply];
+
+					console.log(`【（改）B站成分检测器】即时\n检测到 ${name} ${id} 的成分为\n`, found.map(it => ({ name: it.displayName, reason: it.reason, sure: it.sure, item: it.item, keyword: it.keyword, uid: it.uid, full: it.full })))
 				} else if (errors.length > 0) {
 					throw new CodeError(errors)
 				}
