@@ -2447,13 +2447,6 @@
 			]
 		},
 		{
-			// https://community.wvbtech.com/d/3983
-			displayName: "键政神人",
-			displayIcon: "https://i0.hdslb.com/bfs/face/2d852dcc4c8fcc281201b52977705829a75d5c0d.jpg@100w_100h.webp",
-			followings: [2005074146],
-			blacklist: [2005074146]
-		},
-		{
 			displayName: "这辈子有了",
 			displayIcon: "https://i0.hdslb.com/bfs/emote/63c9d1a31c0da745b61cdb35e0ecb28635675db2.png@100w_100h.webp",
 			keywords: ["这辈子有了"],
